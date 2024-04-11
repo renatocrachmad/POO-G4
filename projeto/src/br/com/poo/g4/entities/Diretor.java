@@ -23,10 +23,12 @@ public class Diretor extends Funcionario {
 		Diretor.mapaDiretores = mapaDiretores;
 	}
 	
+	//A ser implementado posteriormente
 	public void relatorioContas() {
 		
 	}
 	
+	//A ser implementado posteriormente
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
 		
 	}

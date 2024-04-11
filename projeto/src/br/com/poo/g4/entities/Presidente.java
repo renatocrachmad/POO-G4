@@ -19,14 +19,17 @@ public class Presidente extends Funcionario {
 		Presidente.mapaDiretores = mapaDiretores;
 	}
 	
+	//A ser implementado posteriormente
 	public void listaDiretores() {
 		
 	}
 	
+	//A ser implementado posteriormente
 	public double totalBanco() {
 		return 0;
 	}
 	
+	//A ser implementado posteriormente
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
 		
 	}

@@ -34,14 +34,17 @@ public class Gerente extends Funcionario {
 		Gerente.mapaGerentes = mapaGerentes;
 	}
 	
+	//A ser implementado posteriormente
 	public int totalContas() {
 		return 0;
 	}
 	
+	//A ser implementado posteriormente
 	public void relatorioContas() {
 		
 	}
 	
+	//A ser implementado posteriormente
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
 		
 	}
