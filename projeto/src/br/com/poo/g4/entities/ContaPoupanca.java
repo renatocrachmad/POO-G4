@@ -11,7 +11,8 @@ public class ContaPoupanca extends Conta {
 			}
 
 	public ContaPoupanca(String cpf, double saldo, String agencia, String tipo, Double rendimento) {
-		super(cpf, saldo, agencia, tipo, rendimento);		
+		super(cpf, saldo, agencia, tipo );
+		this.rendimento = rendimento;
 	}
 	
 	public Double getRendimento() {

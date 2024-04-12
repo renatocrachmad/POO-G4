@@ -6,7 +6,7 @@ public class SistemaInterno {
 
 	public static void main(String[] args) {
 		
-		ContaCorrente contaCorrente = new ContaCorrente("123.456.789-11",500.00,"011","Conta corrente",0.10,0.10);
+		ContaCorrente contaCorrente = new ContaCorrente("123.456.789-11",500.00,"011","Conta corrente",0.10);
 		//metodo depositar
 		//contaCorrente.depositar(-400.00);
 		//metodo sacar

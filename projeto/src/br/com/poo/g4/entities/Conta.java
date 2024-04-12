@@ -6,19 +6,16 @@ public abstract class Conta {
 	protected double saldo;
 	protected String agencia;
 	protected String tipo;
-	protected Double rendimento;
-		
-	
+			
 	public Conta() {
 		
 	}
-	public Conta(String cpf, double saldo, String agencia, String tipo, Double rendimento) {
+	public Conta(String cpf, double saldo, String agencia, String tipo) {
 		super();
 		this.cpf = cpf;
 		this.saldo = saldo;
 		this.agencia = agencia;
-		this.tipo = tipo;
-		this.rendimento = rendimento;
+		this.tipo = tipo;		
 	}
 	public String getCpf() {
 		return cpf;
@@ -43,13 +40,7 @@ public abstract class Conta {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-	public Double getRendimento() {
-		return rendimento;
-	}
-	public void setRendimento(Double rendimento) {
-		this.rendimento = rendimento;
-	}		
+	}	
 	public void depositar(double valor) {
 		// verificar se o valor é diferente de negativo e diferente de 0
 		if (valor <= 0) {
@@ -82,7 +73,6 @@ public abstract class Conta {
 	}
 	@Override
 	public String toString() {
-		return "Conta [cpf=" + cpf + ", saldo=" + saldo + ", agencia=" + agencia + ", tipo=" + tipo + ", rendimento="
-				+ rendimento + "]";
+		return "Conta [cpf=" + cpf + ", saldo=" + saldo + ", agencia=" + agencia + ", tipo=" + tipo + "]";
 	}
 }

@@ -1,15 +1,17 @@
 package br.com.poo.g4.entities;
-public class ContaCorrente {
+public class ContaCorrente extends Conta {
 	Double taxa;
 	
 	public ContaCorrente() {
 		super();
-	}
-
-	public ContaCorrente(String cpf, double saldo, String agencia, String tipo, Double rendimento, Double taxa) {
-		super(cpf, saldo, agencia, tipo, rendimento);
+	}		
+	
+	public ContaCorrente(String cpf, double saldo, String agencia, String tipo, Double taxa) {
+		super(cpf, saldo, agencia, tipo);
 		this.taxa = taxa;
 	}
+
+
 
 	public Double getTaxa() {
 		return taxa;
