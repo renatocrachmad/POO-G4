@@ -85,6 +85,4 @@ public abstract class Conta {
 		return "Conta [cpf=" + cpf + ", saldo=" + saldo + ", agencia=" + agencia + ", tipo=" + tipo + ", rendimento="
 				+ rendimento + "]";
 	}
-
-	
 }

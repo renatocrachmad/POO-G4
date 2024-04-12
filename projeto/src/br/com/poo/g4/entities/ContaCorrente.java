@@ -1,9 +1,7 @@
 package br.com.poo.g4.entities;
-
-public class ContaCorrente extends Conta {
-
+public class ContaCorrente {
 	Double taxa;
-
+	
 	public ContaCorrente() {
 		super();
 	}
