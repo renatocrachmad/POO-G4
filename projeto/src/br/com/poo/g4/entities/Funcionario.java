@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class Funcionario {
+	protected String nome;
 	protected Integer cpf;
 	protected String senha;
 	protected String tipo;
@@ -15,11 +16,20 @@ public abstract class Funcionario {
 	}
 
 	//Fazer override pra só criar tipo dependendo da classe
-	public Funcionario(Integer cpf, String senha) {
+	public Funcionario(String nome, Integer cpf, String senha) {
 		super();
+		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
 		this.tipo = "FUNCIONARIO";
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getSenha() {

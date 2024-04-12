@@ -6,8 +6,8 @@ import java.util.Map;
 public class Presidente extends Funcionario {
 	static Map mapaDiretores = new HashMap<>();
 
-	public Presidente(Integer cpf, String senha) {
-		super(cpf, senha);
+	public Presidente(String nome, Integer cpf, String senha) {
+		super(nome, cpf, senha);
 		this.tipo = "PRESIDENTE";
 	}
 
@@ -34,11 +34,11 @@ public class Presidente extends Funcionario {
 		
 	}
 	
-	public void cadastrarGerente(Integer cpf, String senha, Integer agencia) {
-		Funcionario gerente = new Gerente(cpf, senha, agencia);
+	public void cadastrarGerente(String nome, Integer cpf, String senha, Integer agencia) {
+		Funcionario gerente = new Gerente(nome, cpf, senha, agencia);
 	}
 	
-	public void cadastrarDiretor(Integer cpf, String senha) {
-		Funcionario diretor = new Diretor(cpf, senha);
+	public void cadastrarDiretor(String nome, Integer cpf, String senha) {
+		Funcionario diretor = new Diretor(nome, cpf, senha);
 	}
 }
