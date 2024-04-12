@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Diretor extends Funcionario {
-	static Map<Integer, Diretor> mapaDiretores = new HashMap<>();
 
 	public Diretor() {
 		super();
@@ -13,14 +12,6 @@ public class Diretor extends Funcionario {
 	public Diretor(String nome, Integer cpf, String senha) {
 		super(nome, cpf, senha);
 		this.tipo = "DIRETOR";
-	}
-
-	public static Map<Integer, Diretor> getMapaDiretores() {
-		return mapaDiretores;
-	}
-
-	public static void setMapaDiretores(Map<Integer, Diretor> mapaDiretores) {
-		Diretor.mapaDiretores = mapaDiretores;
 	}
 	
 	//A ser implementado posteriormente
@@ -39,7 +30,7 @@ public class Diretor extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Diretor [cpf=" + cpf + ", tipo=" + tipo + "]";
+		return "Diretor [nome=" + nome + ", cpf=" + cpf + "]";
 	}
 	
 }

@@ -5,8 +5,6 @@ import java.util.Map;
 
 public class Gerente extends Funcionario {
 	private Integer agencia;
-	
-	static Map<Integer, Gerente> mapaGerentes = new HashMap<>();
 
 	public Gerente() {
 		super();
@@ -24,14 +22,6 @@ public class Gerente extends Funcionario {
 
 	public void setAgencia(Integer agencia) {
 		this.agencia = agencia;
-	}
-
-	public static Map<Integer, Gerente> getMapaGerentes() {
-		return mapaGerentes;
-	}
-
-	public static void setMapaGerentes(Map<Integer, Gerente> mapaGerentes) {
-		Gerente.mapaGerentes = mapaGerentes;
 	}
 	
 	//A ser implementado posteriormente
@@ -51,7 +41,7 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Gerente [cpf =" + cpf + ", tipo =" + tipo + ", agencia =" + agencia + "]";
+		return "Gerente [agencia=" + agencia + ", nome=" + nome + ", cpf=" + cpf + "]";
 	}
 
 }
