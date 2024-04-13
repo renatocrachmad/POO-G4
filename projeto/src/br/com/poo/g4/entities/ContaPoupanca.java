@@ -4,8 +4,6 @@ public class ContaPoupanca extends Conta {
 
 	Double rendimento;
 	
-	
-
 	public ContaPoupanca() {
 		super();
 			}

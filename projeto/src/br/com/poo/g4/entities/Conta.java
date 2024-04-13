@@ -1,22 +1,36 @@
 package br.com.poo.g4.entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Conta {
 	
 	protected String cpf;
-	protected double saldo;
+	protected Double saldo;
 	protected String agencia;
 	protected String tipo;
 			
 	public Conta() {
-		
+		super();
 	}
-	public Conta(String cpf, double saldo, String agencia, String tipo) {
+	public Conta(String cpf, Double saldo, String agencia, String tipo) {
 		super();
 		this.cpf = cpf;
 		this.saldo = saldo;
 		this.agencia = agencia;
 		this.tipo = tipo;		
 	}
+	
+	static Map<Integer, Conta> mapaContas = new HashMap<>();
+	
+	public static Map<Integer, Conta> getMapaContas() {
+		return mapaContas;
+	}
+
+	public static void setMapaContas(Map<Integer, Conta> mapaContas) {
+		Conta.mapaContas = mapaContas;
+	}
+	
 	public String getCpf() {
 		return cpf;
 	}
@@ -26,7 +40,7 @@ public abstract class Conta {
 	public double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(double saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 	public String getAgencia() {

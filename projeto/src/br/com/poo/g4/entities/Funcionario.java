@@ -5,7 +5,7 @@ import java.util.Map;
 
 public abstract class Funcionario {
 	protected String nome;
-	protected Integer cpf;
+	protected String cpf;
 	protected String senha;
 	protected String tipo;
 	
@@ -16,7 +16,7 @@ public abstract class Funcionario {
 	}
 
 	//Fazer override pra só criar tipo dependendo da classe
-	public Funcionario(String nome, Integer cpf, String senha) {
+	public Funcionario(String nome, String cpf, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -56,7 +56,7 @@ public abstract class Funcionario {
 		Funcionario.mapaFuncionarios = mapaFuncionarios;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 

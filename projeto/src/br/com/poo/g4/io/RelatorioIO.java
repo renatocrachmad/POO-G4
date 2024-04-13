@@ -33,17 +33,25 @@ public class RelatorioIO {
 			if (linha != null) {
 				String[] dados = linha.split(";");
 				if (dados[0].equalsIgnoreCase(TipoFuncionario.GERENTE.name())) {
-					Funcionario gerente = new Gerente(dados[1], Integer.parseInt(dados[2]), dados[3], Integer.parseInt(dados[4]));
+					Funcionario gerente = new Gerente(dados[1], dados[2], dados[3], Integer.parseInt(dados[4]));
 					Funcionario.getMapaFuncionarios().put(Integer.parseInt(dados[2]), gerente);
 					logger.log(Level.INFO, gerente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoFuncionario.DIRETOR.name())) {
-					Funcionario diretor = new Diretor(dados[1], Integer.parseInt(dados[2]), dados[3]);
+					Funcionario diretor = new Diretor(dados[1], dados[2], dados[3]);
 					Funcionario.getMapaFuncionarios().put(Integer.parseInt(dados[2]), diretor);
 					logger.log(Level.INFO, diretor::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoFuncionario.PRESIDENTE.name())) {
-					Funcionario presidente = new Presidente(dados[1], Integer.parseInt(dados[2]), dados[3]);
+					Funcionario presidente = new Presidente(dados[1], dados[2], dados[3]);
 					Funcionario.getMapaFuncionarios().put(Integer.parseInt(dados[2]), presidente);
 					logger.log(Level.INFO, presidente::toString);
+				} else if (dados[0].equalsIgnoreCase(TipoConta.CORRENTE.name())) {
+					Conta corrente = new ContaCorrente(dados[1], Double.parseDouble(dados[2]), dados[3], dados[4], Double.parseDouble(dados[5]));
+					Conta.getMapaContas().put(Integer.parseInt(dados[2]), corrente);
+					logger.log(Level.INFO, corrente::toString);
+				} else if (dados[0].equalsIgnoreCase(TipoConta.POUPANCA.name())) {
+					Conta poupanca = new ContaPoupanca(dados[1], Double.parseDouble(dados[2]), dados[3], dados[4], Double.parseDouble(dados[5]));
+					Conta.getMapaContas().put(Integer.parseInt(dados[2]), poupanca);
+					logger.log(Level.INFO, poupanca::toString);
 				}
 			} else {
 				break;

@@ -9,7 +9,7 @@ public class Diretor extends Funcionario {
 		super();
 	}
 
-	public Diretor(String nome, Integer cpf, String senha) {
+	public Diretor(String nome, String cpf, String senha) {
 		super(nome, cpf, senha);
 		this.tipo = "DIRETOR";
 	}
@@ -24,7 +24,7 @@ public class Diretor extends Funcionario {
 		
 	}
 	
-	public void cadastrarGerente(String nome, Integer cpf, String senha, Integer agencia) {
+	public void cadastrarGerente(String nome, String cpf, String senha, Integer agencia) {
 		Funcionario gerente = new Gerente(nome, cpf, senha, agencia);
 	}
 

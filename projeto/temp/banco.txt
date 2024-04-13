@@ -1,7 +1,16 @@
-Gerente;NomeGerente1;123;1234;2;
-Gerente;NomeGerente2;987;5678;2;
-Gerente;NomeGerente3;456;9012;2;
-Gerente;NomeGerente4;789;3456;2;
-Diretor;NomeDiretor;2345;6789;
-Diretor;NomeDiretor2;345;9012;
-Presidente;NomePresidente;456;2345;
+Gerente;Mathias Barbosa;154.987.345-20;1234;GERENTE;001;
+Gerente;Renan Garcia;987.586.475-14;5678;GERENTE;005;
+Gerente;Tabata Pinheiro;456.784.154-78;9012;GERENTE;002;
+Gerente;Marcela Ferreira;789.245.784-12;3456;GERENTE;007;
+Diretor;Geraldo Freitas;234.536.547-87;6789;DIRETOR;
+Diretor;Thadeu Gomes;345.324.547-20;9012;DIRETOR;
+Presidente;Emilly Oliveira;456.457.894-58;2345;DIRETOR;
+Corrente;078.547.547-89;0,0;001;CORRENTE;2
+Corrente;154.654.877-45;125,30;003;CORRENTE;2
+Corrente;164.878.957-52;340,25;004;CORRENTE;4
+Corrente;169.487.156-44;127,40;002;CORRENTE;1,2
+Corrente;068.498.134-58;3578,50;008;CORRENTE;5,4
+Poupanca;098.463.478-41;15478,00;003;POUPANCA;3
+Poupanca;684.895.263-54;6487,58;007;POUPANCA;1,5
+Poupanca;165.874.635-74;98716,90;009;POUPANCA;2,3
+Poupanca;615.896.897-45;641,20;005;POUPANCA;1,7
