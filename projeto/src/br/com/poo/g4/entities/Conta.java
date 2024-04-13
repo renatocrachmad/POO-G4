@@ -21,13 +21,13 @@ public abstract class Conta {
 		this.tipo = tipo;		
 	}
 	
-	static Map<Integer, Conta> mapaContas = new HashMap<>();
+	static Map<String, Conta> mapaContas = new HashMap<>();
 	
-	public static Map<Integer, Conta> getMapaContas() {
+	public static Map<String, Conta> getMapaContas() {
 		return mapaContas;
 	}
 
-	public static void setMapaContas(Map<Integer, Conta> mapaContas) {
+	public static void setMapaContas(Map<String, Conta> mapaContas) {
 		Conta.mapaContas = mapaContas;
 	}
 	

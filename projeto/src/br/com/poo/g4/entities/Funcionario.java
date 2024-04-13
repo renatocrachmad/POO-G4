@@ -9,7 +9,7 @@ public abstract class Funcionario {
 	protected String senha;
 	protected String tipo;
 	
-	static Map<Integer, Funcionario> mapaFuncionarios = new HashMap<>();
+	static Map<String, Funcionario> mapaFuncionarios = new HashMap<>();
 
 	public Funcionario() {
 		super();
@@ -48,11 +48,11 @@ public abstract class Funcionario {
 		this.tipo = tipo;
 	}
 
-	public static Map<Integer, Funcionario> getMapaFuncionarios() {
+	public static Map<String, Funcionario> getMapaFuncionarios() {
 		return mapaFuncionarios;
 	}
 
-	public static void setMapaFuncionarios(Map<Integer, Funcionario> mapaFuncionarios) {
+	public static void setMapaFuncionarios(Map<String, Funcionario> mapaFuncionarios) {
 		Funcionario.mapaFuncionarios = mapaFuncionarios;
 	}
 
