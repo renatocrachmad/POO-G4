@@ -6,8 +6,8 @@ public class ContaCorrente extends Conta {
 		super();
 	}		
 	
-	public ContaCorrente(String cpf, double saldo, String agencia, String tipo, Double taxa) {
-		super(cpf, saldo, agencia, tipo);
+	public ContaCorrente(String cpf, String agencia, String tipo, Double taxa) {
+		super(cpf, agencia, tipo);
 		this.taxa = taxa;
 	}
 

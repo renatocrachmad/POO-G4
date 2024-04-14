@@ -13,10 +13,11 @@ public abstract class Conta {
 	public Conta() {
 		super();
 	}
-	public Conta(String cpf, Double saldo, String agencia, String tipo) {
+	
+	public Conta(String cpf, String agencia, String tipo) {
 		super();
 		this.cpf = cpf;
-		this.saldo = saldo;
+		this.saldo = 0.0;
 		this.agencia = agencia;
 		this.tipo = tipo;		
 	}

@@ -45,11 +45,11 @@ public class RelatorioIO {
 					Funcionario.getMapaFuncionarios().put(dados[2], presidente);
 					logger.log(Level.INFO, presidente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.CORRENTE.name())) {
-					Conta corrente = new ContaCorrente(dados[1], Double.parseDouble(dados[2]), dados[3], dados[4], Double.parseDouble(dados[5]));
+					Conta corrente = new ContaCorrente(dados[1], dados[2], dados[3], Double.parseDouble(dados[4]));
 					Conta.getMapaContas().put(dados[2], corrente);
 					logger.log(Level.INFO, corrente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.POUPANCA.name())) {
-					Conta poupanca = new ContaPoupanca(dados[1], Double.parseDouble(dados[2]), dados[3], dados[4], Double.parseDouble(dados[5]));
+					Conta poupanca = new ContaPoupanca(dados[1], dados[2], dados[3], Double.parseDouble(dados[4]));
 					Conta.getMapaContas().put(dados[2], poupanca);
 					logger.log(Level.INFO, poupanca::toString);
 				}
