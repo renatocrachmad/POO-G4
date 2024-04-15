@@ -56,6 +56,7 @@ public abstract class Conta {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}	
+	
 	public void depositar(double valor) {
 		// verificar se o valor é diferente de negativo e diferente de 0
 		if (valor <= 0) {

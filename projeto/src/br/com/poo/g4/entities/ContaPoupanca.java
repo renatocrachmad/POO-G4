@@ -8,8 +8,8 @@ public class ContaPoupanca extends Conta {
 		super();
 			}
 
-	public ContaPoupanca(String cpf, String agencia, String tipo, Double rendimento) {
-		super(cpf, agencia, tipo );
+	public ContaPoupanca(String cpf, String agencia, Double rendimento) {
+		super(cpf, agencia, "POUPANCA");
 		this.rendimento = rendimento;
 	}
 	

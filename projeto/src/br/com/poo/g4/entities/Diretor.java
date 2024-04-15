@@ -21,7 +21,6 @@ public class Diretor extends Funcionario {
 	
 	//A ser implementado posteriormente
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
-		
 	}
 	
 	public void cadastrarGerente(String nome, String cpf, String senha, Integer agencia) {
