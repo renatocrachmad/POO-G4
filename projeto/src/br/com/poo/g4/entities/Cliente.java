@@ -6,21 +6,20 @@ import java.util.Map;
 public class Cliente {
 	
 	private String nome;
-	private Integer cpf;
+	private String cpf;
 	private String senha;
 	
-	private Map<Integer, Cliente> mapaClientes = new HashMap<>();
+	static Map<String, Cliente> mapaClientes = new HashMap<>();
 
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(String nome, Integer cpf, String senha, Map<Integer, Cliente> mapaClientes) {
+	public Cliente(String nome, String cpf, String senha) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 		this.senha = senha;
-		this.mapaClientes = mapaClientes;
 	}
 
 	public String getNome() {
@@ -39,20 +38,20 @@ public class Cliente {
 		this.senha = senha;
 	}
 
-	public Map<Integer, Cliente> getMapaClientes() {
+	public static Map<String, Cliente> getMapaClientes() {
 		return mapaClientes;
 	}
 
-	public void setMapaClientes(Map<Integer, Cliente> mapaClientes) {
-		this.mapaClientes = mapaClientes;
+	public static void setMapaClientes(Map<String, Cliente> mapaClientes) {
+		Cliente.mapaClientes = mapaClientes;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", cpf=" + cpf + ", mapaClientes=" + mapaClientes + "]";
+		return "Cliente [nome=" + nome + ", cpf=" + cpf + "]";
 	}
 }

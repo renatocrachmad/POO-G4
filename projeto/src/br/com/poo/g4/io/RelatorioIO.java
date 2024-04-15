@@ -52,6 +52,10 @@ public class RelatorioIO {
 					Conta poupanca = new ContaPoupanca(dados[1], dados[2], dados[3], Double.parseDouble(dados[4]));
 					Conta.getMapaContas().put(dados[2], poupanca);
 					logger.log(Level.INFO, poupanca::toString);
+				} else if (dados[0].equalsIgnoreCase("CLIENTE") ) {
+					Cliente cliente = new Cliente(dados[1], dados[2], dados[3]);
+					Cliente.getMapaClientes().put(dados[2], cliente);
+					logger.log(Level.INFO, cliente::toString);
 				}
 			} else {
 				break;
