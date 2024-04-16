@@ -19,7 +19,7 @@ public class MenuService {
 		Util.customizer();
 		logger.log(Level.INFO, """
 				Menu interativo:
-				[1]\tLogin
+				[1]\t A implementar
 				[2]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
@@ -29,7 +29,7 @@ public class MenuService {
 
 			switch (opcao) {
 			case 1:
-				AutenticacaoController.autenticar();
+				//AutenticacaoController.autenticar();
 				break;
 			case 2:
 				AutenticacaoController.cadastrar();

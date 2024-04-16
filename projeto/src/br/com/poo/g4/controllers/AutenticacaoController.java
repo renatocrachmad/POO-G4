@@ -13,4 +13,9 @@ public class AutenticacaoController {
 		AutenticacaoService.leitorCadastro();
 
 	}
+
+	public static void logo() {
+		AutenticacaoService.logo();
+	}
+	
 }
