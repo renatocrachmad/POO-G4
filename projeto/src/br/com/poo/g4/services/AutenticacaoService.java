@@ -17,7 +17,7 @@ public class AutenticacaoService {
 	public static void autenticacao() {
 		
 		//Inserir logo do banco
-		System.out.println("Logo");
+		//System.out.println("Logo");
 		//Evita duplicação da mensagem
 		Util.customizer();
 		logger.log(Level.INFO, "===============================\n"
