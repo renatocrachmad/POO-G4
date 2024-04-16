@@ -71,9 +71,9 @@ public class RelatorioIO {
 
 		// Escreve os dados ao final da linha do arquivo de texto
 		writer.append("Cliente;" + novoCliente.getNome() + ";" + novoCliente.getCpf() + ";" + novoCliente.getSenha()
-				+ ";");
-		writer.append("\n");
-		writer.flush();
+				+ ";\n");
+		//writer.flush();
+		writer.close();
 	}
 }
 

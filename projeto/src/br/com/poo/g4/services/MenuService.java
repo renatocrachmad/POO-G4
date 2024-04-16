@@ -7,7 +7,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.g4.controllers.AutenticacaoController;
-import br.com.poo.g4.controllers.CadastroController;
 import br.com.poo.g4.util.Util;
 
 public class MenuService {
@@ -33,7 +32,7 @@ public class MenuService {
 				AutenticacaoController.autenticar();
 				break;
 			case 2:
-				CadastroController.cadastrar();
+				AutenticacaoController.cadastrar();
 				break;
 			case 0:
 				Util.customizer();
