@@ -11,5 +11,4 @@ public class SistemaInterno {
 		RelatorioIO.leitor("banco");
 		AutenticacaoService.verificacao();
 	}
-
 }

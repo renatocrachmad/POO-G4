@@ -31,7 +31,7 @@ public class Util {
 			@Override
 			public String format(LogRecord rec) {
 				// Define o formato da mensagem de log a ser exibida no console
-				return rec.getMessage() + "\n";
+				return rec.getMessage();
 			}
 		});
 
