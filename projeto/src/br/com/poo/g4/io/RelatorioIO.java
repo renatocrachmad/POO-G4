@@ -8,7 +8,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,11 +50,11 @@ public class RelatorioIO {
 					// logger.log(Level.INFO, presidente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.CORRENTE.name())) {
 					Conta corrente = new ContaCorrente(dados[1], dados[2], Double.parseDouble(dados[3]));
-					Conta.getMapaContas().put(dados[2], corrente);
+					Conta.getMapaContas().put(dados[1], corrente);
 					// logger.log(Level.INFO, corrente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.POUPANCA.name())) {
 					Conta poupanca = new ContaPoupanca(dados[1], dados[2], Double.parseDouble(dados[3]));
-					Conta.getMapaContas().put(dados[2], poupanca);
+					Conta.getMapaContas().put(dados[1], poupanca);
 					// logger.log(Level.INFO, poupanca::toString);
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
 					Cliente cliente = new Cliente(dados[1], dados[2], dados[3]);
@@ -75,55 +79,198 @@ public class RelatorioIO {
 		//writer.flush();
 		writer.close();
 	}
+	
+	public static void extratoSaque(Double quantidade) throws IOException {
+		
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append(">=====================<\n");		
+		buffWrite.append("         Saque realizado!\n");
+		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("Valor: R$ " + quantidade + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();			
+	}
+	
+	public static void extratoDeposito(Double quantidade) throws IOException {
+		
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append(">=====================<\n");		
+		buffWrite.append("         Depósito realizado!\n");
+		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("Valor: R$ " + quantidade + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();
+	}
+	
+	public static void extratoTransferencia(Conta destino, Double quantidade) throws IOException {
+		
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append(">=====================<\n");		
+		buffWrite.append("         Transferência realizada!\n");
+		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("Valor: R$ " + quantidade + "\n");
+		buffWrite.append("CPF Destinatário: " + destino.getCpf() + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();		
+	}
+	
+	public static void extratoSaldo(Conta conta) throws IOException {
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("Saldo: R$ " + conta.getSaldo() + "\n");		
+		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();	
+	}
+	
+	public static void extratoTributacao(Conta conta) throws IOException {
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO));
+
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("Tributação total de saques: R$ " + "inserirlogica" + "\n");
+		buffWrite.append("Tributação total de depósitos: R$" + "inserirlogica" + "\n");
+		buffWrite.append("Tributação total de transferências: R$ " + "inserirLogica" + "\n");		
+		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();
+	}
+	
+	public static void simulacaoRendimento(Double valor, Integer prazo, Double rendimento) throws IOException {
+		String nome = "extrato";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("     Simulação de rendimento:");
+		buffWrite.append("Valor inicial: R$" + valor + "\n");
+		buffWrite.append("Prazo: " + prazo + "dias\n");		
+		buffWrite.append("Valor final: " + (valor + (valor * rendimento * prazo)) + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();	
+	}
+	
+	public static void relatorioAgencia(String agencia) throws IOException {
+		String nome = "relatorios";
+		LocalDateTime ldt = LocalDateTime.now();
+		
+		Integer quantidadeContas = 0;
+		Double saldoTotal = 0.0;
+		Integer contasCorrente = 0;
+		Integer contasPoupanca = 0;
+		
+		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		
+		for (Conta conta : mapaContas.values()) {
+			if (conta.getAgencia().equals(agencia)) {
+				quantidadeContas += 1;
+				saldoTotal += conta.getSaldo();
+				if (conta.getTipo().equalsIgnoreCase("CORRENTE")) {
+					contasCorrente += 1;
+				} else if (conta.getTipo().equalsIgnoreCase("POUPANCA")) {
+					contasPoupanca += 1;
+				}
+			}
+		}
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("       Agência #" + agencia + "\n");
+		buffWrite.append("Quantidade de contas: " + quantidadeContas + "\n");
+		buffWrite.append("Contas-corrente: " + contasCorrente + "\n");
+		buffWrite.append("Contas-poupança: " + contasPoupanca + "\n");
+		buffWrite.append("Total de saldo: R$ " + saldoTotal + "\n");
+		buffWrite.append("Quantidade de saques: " + "vish" + "\n");
+		buffWrite.append("Quantidade de depósitos: " + "vish" + "\n");
+		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+		
+		buffWrite.close();
+	}
+	
+	public static void relatorioContas(Cliente cliente, Funcionario diretor) throws IOException {
+		String nome = "relatorios";
+		Map<String, Cliente> mapaClientes = cliente.getMapaClientes();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("      Diretor " + diretor.getNome() + "\n\n");
+		for (Cliente c : mapaClientes.values()) {
+			buffWrite.append(c.toString());
+		}
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+	}
+	
+	public static void relatorioDiretores(Funcionario presidente) throws IOException {
+		String nome = "relatorios";
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		
+		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
+		
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("      Presidente " + presidente.getNome() + "\n\n");
+		for (Funcionario funcionario : mapaFuncionarios.values()) {
+			if (funcionario.getTipo().equalsIgnoreCase("DIRETOR")) {
+				buffWrite.append(funcionario.toString());
+			}
+		}
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");		
+	}
+	
+	public static void relatorioCapital(Funcionario presidente) throws IOException {
+		String nome = "relatorios";
+		LocalDateTime ldt = LocalDateTime.now();
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		Double capitalTotal = 0.0;		
+		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		
+		for (Conta conta : mapaContas.values()) {
+			capitalTotal += conta.getSaldo();
+		}
+		
+		buffWrite.append(">=====================<\n");
+		buffWrite.append("      Presidente " + presidente.getNome() + "\n\n");
+		buffWrite.append("Total de capital: R$ " + capitalTotal + "\n");
+		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append("         UruBank\n");
+		buffWrite.append(">=====================<\n\n");
+	}
 }
 
-/*
- * public static void relatorioListaUsuarios(List<Usuario> nomesUsuarios) throws
- * IOException { String nome = "lista-nomes-usuarios";
- * 
- * BufferedWriter buffWrite = new BufferedWriter(new FileWriter(CAMINHO_BASICO +
- * nome + EXTENSAO, true));
- * 
- * buffWrite.append("-------RELATÓRIO: LISTA NOMES DE USUARIOS------\n\n"); if
- * (!nomesUsuarios.isEmpty()) { // Foreach para percorrer a lista de nomes dos
- * pets de um em um for (Usuario usuario : nomesUsuarios) {
- * buffWrite.append(usuario.getNome() + "\n"); } } LocalDateTime ldt =
- * LocalDateTime.now(); buffWrite.append("\nData da requisição: " +
- * dtfBr.format(ldt));
- * buffWrite.append("\n\n---------FIM DA LISTA NOMES DE USUARIOS--------\n\n");
- * buffWrite.close(); }
- * 
- * public static void relatorioListaDenuncia(List<Denuncia> denuncias) throws
- * IOException { String nome = "lista-denuncias";
- * 
- * BufferedWriter buffWrite = new BufferedWriter(new FileWriter(CAMINHO_BASICO +
- * nome + EXTENSAO, true));
- * 
- * buffWrite.append("-------RELATÓRIO: LISTA DE DENUNCIAS------\n\n"); if
- * (!denuncias.isEmpty()) { // Foreach para percorrer a lista de nomes dos pets
- * de um em um for (Denuncia denuncia : denuncias) { buffWrite.append(
- * "Detalhamento:" + denuncia.getDetalhamento() + "\nAnônimo: " +
- * denuncia.getAnonimo() + "\n"); } } LocalDateTime ldt = LocalDateTime.now();
- * buffWrite.append("\nData da requisição: " + dtfBr.format(ldt));
- * buffWrite.append("\n\n---------FIM DA LISTA DE DENUNCIAS--------\n\n");
- * buffWrite.close(); }
- * 
- * public static void relatorioListaDenunciaUsuario(List<Denuncia> denuncias,
- * List<Usuario> usuarios) throws IOException { String nome =
- * "lista-denuncias-usuarios";
- * 
- * BufferedWriter buffWrite = new BufferedWriter(new FileWriter(CAMINHO_BASICO +
- * nome + EXTENSAO, true));
- * 
- * buffWrite.
- * append("-------RELATÓRIO: LISTA DE DENUNCIAS POR USUARIOS------\n\n"); if
- * (!denuncias.isEmpty() && !usuarios.isEmpty()) { // Foreach para percorrer a
- * lista de nomes dos pets de um em um for (Denuncia denuncia : denuncias) { for
- * (Usuario usuario : usuarios) { if (denuncia.getFkUsu() == usuario.getId()) {
- * buffWrite.append("Detalhamento:" + denuncia.getDetalhamento() + " Anônimo: "
- * + denuncia.getAnonimo() + " Usuário:" + usuario.getNome() + "\n"); } } } }
- * LocalDateTime ldt = LocalDateTime.now();
- * buffWrite.append("\nData da requisição: " + dtfBr.format(ldt)); buffWrite.
- * append("\n\n---------FIM DA LISTA DE DENUNCIAS POR USUARIOS--------\n\n");
- * buffWrite.close(); } }
- */
+

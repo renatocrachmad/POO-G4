@@ -15,16 +15,18 @@ public class AutenticacaoService {
 
 	private static Logger logger = Util.setupLogger();
 	static Scanner sc = new Scanner(System.in);
+	public static final String RESET = "\u001B[0m";
+	public static final String VERDE = "\u001B[32m";
 	
 	public static void logo() {
-		System.out.println("   _   _   _    _    _            ____              _       _   _   _  \r\n"
+		System.out.println(VERDE + "   _   _   _    _    _            ____              _       _   _   _  \r\n"
 				+ "  | | | | | |  | |  | |          |  _ \\            | |     | | | | | | \r\n"
 				+ " / __) __) __) | |  | |_ __ _   _| |_) | __ _ _ __ | | __ / __) __) __)\r\n"
 				+ " \\__ \\__ \\__ \\ | |  | | '__| | | |  _ < / _` | '_ \\| |/ / \\__ \\__ \\__ \\\r\n"
 				+ " (   (   (   / | |__| | |  | |_| | |_) | (_| | | | |   <  (   (   (   /\r\n"
 				+ "  |_| |_| |_|   \\____/|_|   \\__,_|____/ \\__,_|_| |_|_|\\_\\  |_| |_| |_| \r\n"
 				+ "                                                                       \r\n"
-				+ "                                                                       ");
+				+ "                                                                       " + RESET);
 	}
 
 	public static void autenticacao() {
@@ -33,8 +35,11 @@ public class AutenticacaoService {
 		// System.out.println("Logo");
 		// Evita duplicação da mensagem
 		Util.customizer();
-		logger.log(Level.INFO, "===============================\n" + "     Menu de autenticação\n\n"
-				+ " * CPF ___.___.___-__\n" + "===============================\n" + "Digite seu CPF:");
+		logger.log(Level.INFO, "===============================\n" 
+					+ "     Menu de autenticação\n\n"
+					+ " * CPF ___.___.___-__\n" 
+					+ "===============================\n" 
+					+ "Digite seu CPF:");
 		// Recebe o cpf digitado
 		String cpf = sc.nextLine();
 		// Cria um mapa local para ser acessado e atribui ele ao mapa de clientes, que
@@ -44,9 +49,12 @@ public class AutenticacaoService {
 		if (mapaClientes.containsKey(cpf)) {
 			// Cria um objeto do tipo Cliente para essa pessoa que possui tal cpf
 			Cliente cliente = mapaClientes.get(cpf);
-			logger.log(Level.INFO,
-					"===============================\n" + "     Menu de autenticação\n\n" + " * CPF: " + cpf + "\n"
-							+ " * Senha: ____________\n" + "===============================\n" + "Digite sua senha: ");
+			logger.log(Level.INFO, "===============================\n" 
+							+ "     Menu de autenticação\n\n" 
+							+ " * CPF: " + cpf + "\n"
+							+ " * Senha: ____________\n" 
+							+ "===============================\n" 
+							+ "Digite sua senha: ");
 			// Recebe a senha digitada
 			String senha = sc.nextLine();
 			// Verifica se a senha do usuário está correta

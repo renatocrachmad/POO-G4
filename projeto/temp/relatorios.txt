@@ -1,0 +1,12 @@
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 19:43:00
+         UruBank
+>=====================<
+
