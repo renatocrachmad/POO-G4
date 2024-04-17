@@ -29,7 +29,7 @@ public class Diretor extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Diretor [nome=" + nome + ", cpf=" + cpf + "]";
+		return " + Diretor " + nome + " | CPF: " + cpf + "\n";
 	}
 	
 }

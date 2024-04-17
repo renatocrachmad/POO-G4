@@ -86,12 +86,12 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 
-		buffWrite.append(">=====================<\n");		
-		buffWrite.append("         Saque realizado!\n");
-		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("Valor: R$ " + quantidade + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n");		
+		buffWrite.append("        Saque realizado!\n\n");
+		buffWrite.append(" Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append(" Valor: R$ " + quantidade + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();			
 	}
@@ -103,12 +103,12 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 
-		buffWrite.append(">=====================<\n");		
-		buffWrite.append("         Depósito realizado!\n");
-		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("Valor: R$ " + quantidade + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n");		
+		buffWrite.append("      Depósito realizado!\n\n");
+		buffWrite.append(" Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append(" Valor: R$ " + quantidade + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();
 	}
@@ -120,13 +120,13 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 
-		buffWrite.append(">=====================<\n");		
-		buffWrite.append("         Transferência realizada!\n");
-		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("Valor: R$ " + quantidade + "\n");
-		buffWrite.append("CPF Destinatário: " + destino.getCpf() + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n");		
+		buffWrite.append("    Transferência realizada!\n\n");
+		buffWrite.append(" Data: " + dtfBr.format(ldt) + "\n");
+		buffWrite.append(" Valor: R$ " + quantidade + "\n");
+		buffWrite.append(" CPF Destinatário: " + destino.getCpf() + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();		
 	}
@@ -137,11 +137,11 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 
-		buffWrite.append(">=====================<\n");
-		buffWrite.append("Saldo: R$ " + conta.getSaldo() + "\n");		
-		buffWrite.append("Data: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n\n");
+		buffWrite.append(" Saldo: R$ " + conta.getSaldo() + "\n");		
+		buffWrite.append(" Data: " + dtfBr.format(ldt) + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();	
 	}
@@ -152,13 +152,13 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO));
 
-		buffWrite.append(">=====================<\n");
-		buffWrite.append("Tributação total de saques: R$ " + ContaCorrente.getTributacoesSaque() + "\n");
-		buffWrite.append("Tributação total de depósitos: R$" + ContaCorrente.getTributacoesDeposito() + "\n");
-		buffWrite.append("Tributação total de transferências: R$ " + ContaCorrente.getTributacoesTransferencia() + "\n");		
-		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n\n");
+		buffWrite.append(" Tributação total de saques: R$ " + ContaCorrente.getTributacoesSaque() + "\n");
+		buffWrite.append(" Tributação total de depósitos: R$" + ContaCorrente.getTributacoesDeposito() + "\n");
+		buffWrite.append(" Tributação total de transferências: R$ " + ContaCorrente.getTributacoesTransferencia() + "\n");		
+		buffWrite.append(" Data de atualização: " + dtfBr.format(ldt) + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();
 	}
@@ -169,13 +169,13 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 		
-		buffWrite.append(">=====================<\n");
-		buffWrite.append("     Simulação de rendimento:");
-		buffWrite.append("Valor inicial: R$" + valor + "\n");
-		buffWrite.append("Prazo: " + prazo + "dias\n");		
-		buffWrite.append("Valor final: " + (valor + (valor * rendimento * prazo)) + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n");
+		buffWrite.append("    Simulação de rendimento:\n\n");
+		buffWrite.append(" Valor inicial: R$" + valor + "\n");
+		buffWrite.append(" Prazo: " + prazo + "dias\n");		
+		buffWrite.append(" Valor final: " + (valor + (valor * rendimento * prazo)) + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();	
 	}
@@ -205,17 +205,17 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 		
-		buffWrite.append(">=====================<\n");
-		buffWrite.append("       Agência #" + agencia + "\n");
-		buffWrite.append("Quantidade de contas: " + quantidadeContas + "\n");
-		buffWrite.append("Contas-corrente: " + contasCorrente + "\n");
-		buffWrite.append("Contas-poupança: " + contasPoupanca + "\n");
-		buffWrite.append("Total de saldo: R$ " + saldoTotal + "\n");
-		buffWrite.append("Quantidade de saques: " + Conta.getSaquesTotais() + "\n");
-		buffWrite.append("Quantidade de depósitos: " + Conta.getDepositosTotais() + "\n");
-		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(">============================<\n");
+		buffWrite.append("        Agência #" + agencia + "\n\n");
+		buffWrite.append(" Quantidade de contas: " + quantidadeContas + "\n");
+		buffWrite.append(" Contas-corrente: " + contasCorrente + "\n");
+		buffWrite.append(" Contas-poupança: " + contasPoupanca + "\n");
+		buffWrite.append(" Total de saldo: R$ " + saldoTotal + "\n");
+		buffWrite.append(" Quantidade de saques: " + Conta.getSaquesTotais() + "\n");
+		buffWrite.append(" Quantidade de depósitos: " + Conta.getDepositosTotais() + "\n");
+		buffWrite.append(" Data de atualização: " + dtfBr.format(ldt) + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 		
 		buffWrite.close();
 	}
@@ -226,13 +226,13 @@ public class RelatorioIO {
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 		
-		buffWrite.append(">=====================<\n");
+		buffWrite.append(">============================<\n");
 		buffWrite.append("      Diretor " + diretor.getNome() + "\n\n");
 		for (Cliente c : mapaClientes.values()) {
-			buffWrite.append(c.toString());
+			buffWrite.append(" " + c.toString() + "\n");
 		}
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 	}
 	
 	public static void relatorioDiretores(Funcionario presidente) throws IOException {
@@ -241,15 +241,15 @@ public class RelatorioIO {
 		
 		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
 		
-		buffWrite.append(">=====================<\n");
+		buffWrite.append(">============================<\n");
 		buffWrite.append("      Presidente " + presidente.getNome() + "\n\n");
 		for (Funcionario funcionario : mapaFuncionarios.values()) {
 			if (funcionario.getTipo().equalsIgnoreCase("DIRETOR")) {
-				buffWrite.append(funcionario.toString());
+				buffWrite.append(" " + funcionario.toString() + "\n");
 			}
 		}
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");		
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");		
 	}
 	
 	public static void relatorioCapital(Funcionario presidente) throws IOException {
@@ -263,12 +263,12 @@ public class RelatorioIO {
 			capitalTotal += conta.getSaldo();
 		}
 		
-		buffWrite.append(">=====================<\n");
+		buffWrite.append(">============================<\n");
 		buffWrite.append("      Presidente " + presidente.getNome() + "\n\n");
-		buffWrite.append("Total de capital: R$ " + capitalTotal + "\n");
-		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
-		buffWrite.append("         UruBank\n");
-		buffWrite.append(">=====================<\n\n");
+		buffWrite.append(" Total de capital: R$ " + capitalTotal + "\n");
+		buffWrite.append(" Data de atualização: " + dtfBr.format(ldt) + "\n\n");
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
 	}
 }
 

@@ -27,16 +27,6 @@ public class Gerente extends Funcionario {
 	}
 	
 	//A ser implementado posteriormente
-	public int totalContas() {
-		return 0;
-	}
-	
-	//A ser implementado posteriormente
-	public void relatorioContas() {
-		
-	}
-	
-	//A ser implementado posteriormente
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
 		if (tipo.equalsIgnoreCase("CORRENTE")) {
 			// Instanciar nova conta corrente
@@ -49,7 +39,7 @@ public class Gerente extends Funcionario {
 
 	@Override
 	public String toString() {
-		return "Gerente [agencia=" + agencia + ", nome=" + nome + ", cpf=" + cpf + "]";
+		return " + Gerente " + nome + " | Agência: " + agencia + " | CPF: " + cpf + "\n";
 	}
 
 }
