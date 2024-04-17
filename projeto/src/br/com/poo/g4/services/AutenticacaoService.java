@@ -18,7 +18,12 @@ public class AutenticacaoService {
 	static Scanner sc = new Scanner(System.in);
 	public static final String RESET = "\u001B[0m";
 	public static final String VERDE = "\u001B[32m";
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 
+=======
+	public static final String VERMELHO = "\u001B[31m";
+	
+>>>>>>> 89b72d3 feat: Implementando cadastro de contas
 	public static void logo() {
 		System.out.println(VERDE + "   _   _   _    _    _            ____              _       _   _   _  \r\n"
 				+ "  | | | | | |  | |  | |          |  _ \\            | |     | | | | | | \r\n"
