@@ -18,5 +18,8 @@ public class SistemaInterno {
 		RelatorioIO.leitor("banco");
 		AutenticacaoService.verificacao();
 	}
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 
+=======
+>>>>>>> 3bc4b75 fix: correções de autenticação para clientes e suas respectivas contas.
 }

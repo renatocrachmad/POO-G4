@@ -421,6 +421,7 @@ public class AutenticacaoService {
 			leitorCadastro();
 		}
 	}
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 
 	public static void loggerCpf() {
 		logger.log(Level.INFO, """
@@ -442,3 +443,6 @@ public class AutenticacaoService {
 				+ "Digite sua senha: ");
 	}
 }
+=======
+}
+>>>>>>> 3bc4b75 fix: correções de autenticação para clientes e suas respectivas contas.

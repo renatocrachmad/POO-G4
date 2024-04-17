@@ -318,6 +318,7 @@ public class MenuService {
 		}
 	}
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 	
 /*	public static void menu() throws IOException, InterruptedException {
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
@@ -411,3 +412,6 @@ public class MenuService {
 =======
 >>>>>>> 3c5736e fix: Correções gerais
 }
+=======
+}
+>>>>>>> 3bc4b75 fix: correções de autenticação para clientes e suas respectivas contas.
