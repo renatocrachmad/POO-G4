@@ -154,9 +154,9 @@ public class RelatorioIO {
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO));
 
 		buffWrite.append(">=====================<\n");
-		buffWrite.append("Tributação total de saques: R$ " + "inserirlogica" + "\n");
-		buffWrite.append("Tributação total de depósitos: R$" + "inserirlogica" + "\n");
-		buffWrite.append("Tributação total de transferências: R$ " + "inserirLogica" + "\n");		
+		buffWrite.append("Tributação total de saques: R$ " + ContaCorrente.getTributacoesSaque() + "\n");
+		buffWrite.append("Tributação total de depósitos: R$" + ContaCorrente.getTributacoesDeposito() + "\n");
+		buffWrite.append("Tributação total de transferências: R$ " + ContaCorrente.getTributacoesTransferencia() + "\n");		
 		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
 		buffWrite.append("         UruBank\n");
 		buffWrite.append(">=====================<\n\n");
@@ -212,8 +212,8 @@ public class RelatorioIO {
 		buffWrite.append("Contas-corrente: " + contasCorrente + "\n");
 		buffWrite.append("Contas-poupança: " + contasPoupanca + "\n");
 		buffWrite.append("Total de saldo: R$ " + saldoTotal + "\n");
-		buffWrite.append("Quantidade de saques: " + "vish" + "\n");
-		buffWrite.append("Quantidade de depósitos: " + "vish" + "\n");
+		buffWrite.append("Quantidade de saques: " + Conta.getSaquesTotais() + "\n");
+		buffWrite.append("Quantidade de depósitos: " + Conta.getDepositosTotais() + "\n");
 		buffWrite.append("Data de atualização: " + dtfBr.format(ldt) + "\n");
 		buffWrite.append("         UruBank\n");
 		buffWrite.append(">=====================<\n\n");

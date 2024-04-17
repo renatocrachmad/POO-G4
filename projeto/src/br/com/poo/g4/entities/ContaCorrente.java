@@ -1,9 +1,11 @@
 package br.com.poo.g4.entities;
 
 public class ContaCorrente extends Conta {
-	private double saldo;
-	private double totalGasto;	
-	private double taxa;
+	private Double saldo;
+	private static Double tributacoesSaque = 0.0;
+	private static Double tributacoesDeposito = 0.0;
+	private static Double tributacoesTransferencia = 0.0;
+	private Double taxa;
 
 	public ContaCorrente() {
 		super();
@@ -14,12 +16,25 @@ public class ContaCorrente extends Conta {
 		this.taxa = taxa;
 	}
 
+	public static Double getTributacoesSaque() {
+		return tributacoesSaque;
+	}
+
+	public static Double getTributacoesDeposito() {
+		return tributacoesDeposito;
+	}
+
+	public static Double getTributacoesTransferencia() {
+		return tributacoesTransferencia;
+	}
+
 	@Override
 	public void sacar(double valor) {
 		this.taxa = 0.10;
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
-			totalGasto += taxa;
+			this.tributacoesSaque += taxa;
+			saquesTotais += 1;
 		} else {
 			System.out.println("Saldo insuficiente para saque.");
 		}
@@ -29,7 +44,8 @@ public class ContaCorrente extends Conta {
 	public void depositar(double valor) {
 		this.taxa = 0.10;
 		saldo += valor - taxa;
-		totalGasto += taxa;
+		this.tributacoesDeposito += taxa;
+		depositosTotais += 1;
 	}
 
 	@Override
@@ -38,16 +54,9 @@ public class ContaCorrente extends Conta {
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
 			contaDestino.depositar(valor);
-			totalGasto += taxa;
+			this.tributacoesTransferencia += taxa;
 		} else {
 			System.out.println("Saldo insuficiente para transferência.");
 		}
-	}
-
-	public void relatorioTributacao() {
-		System.out.println("Total gasto em operações: R$" + totalGasto);
-		System.out.println("Taxa por saque: R$" + taxa);
-		System.out.println("Taxa por depósito: R$" + taxa);
-		System.out.println("Taxa por transferência: R$" + taxa);
 	}
 }
