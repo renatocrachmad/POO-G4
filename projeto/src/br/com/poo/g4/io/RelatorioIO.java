@@ -37,7 +37,7 @@ public class RelatorioIO {
 			if (linha != null) {
 				String[] dados = linha.split(";");
 				if (dados[0].equalsIgnoreCase(TipoFuncionario.GERENTE.name())) {
-					Funcionario gerente = new Gerente(dados[1], dados[2], dados[3], Integer.parseInt(dados[4]));
+					Funcionario gerente = new Gerente(dados[1], dados[2], dados[3], dados[4]);
 					Funcionario.getMapaFuncionarios().put(dados[2], gerente);
 					// logger.log(Level.INFO, gerente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoFuncionario.DIRETOR.name())) {
@@ -49,7 +49,7 @@ public class RelatorioIO {
 					Funcionario.getMapaFuncionarios().put(dados[2], presidente);
 					// logger.log(Level.INFO, presidente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.CORRENTE.name())) {
-					Conta corrente = new ContaCorrente(dados[1], dados[2], Double.parseDouble(dados[3]));
+					Conta corrente = new ContaCorrente(dados[1], dados[2]);
 					Conta.getMapaContas().put(dados[1], corrente);
 					// logger.log(Level.INFO, corrente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.POUPANCA.name())) {

@@ -11,9 +11,8 @@ public class ContaCorrente extends Conta {
 		super();
 	}
 
-	public ContaCorrente(String cpf, String agencia, Double taxa) {
+	public ContaCorrente(String cpf, String agencia) {
 		super(cpf, agencia, "CORRENTE");
-		this.taxa = taxa;
 	}
 
 	public static Double getTributacoesSaque() {

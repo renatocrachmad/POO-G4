@@ -23,7 +23,7 @@ public class Diretor extends Funcionario {
 	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
 	}
 	
-	public void cadastrarGerente(String nome, String cpf, String senha, Integer agencia) {
+	public void cadastrarGerente(String nome, String cpf, String senha, String agencia) {
 		Funcionario gerente = new Gerente(nome, cpf, senha, agencia);
 	}
 
