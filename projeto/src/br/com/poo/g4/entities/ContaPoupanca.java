@@ -23,6 +23,7 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String toString() {
-		return "ContaPoupanca [rendimento=" + rendimento + "]";
+		return "\n + Conta Poupança | CPF: " + cpf + " | Agência: " + agencia + " | Saldo: " + saldo 
+				+ " | Taxa de rendimento: " + rendimento + "% \n";
 	}				
 }

@@ -59,4 +59,9 @@ public class ContaCorrente extends Conta {
 			System.out.println("Saldo insuficiente para transferência.");
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "\n + Conta Corrente | CPF: " + cpf + " | Agência: " + agencia + " | Saldo: " + saldo + "\n";
+	}
 }
