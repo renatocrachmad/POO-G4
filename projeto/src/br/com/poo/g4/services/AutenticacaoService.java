@@ -1,15 +1,16 @@
 package br.com.poo.g4.services;
 
+import java.io.IOException;
+import java.util.Map;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.g4.entities.Cliente;
+import br.com.poo.g4.entities.Funcionario;
+import br.com.poo.g4.enums.TipoFuncionario;
 import br.com.poo.g4.io.RelatorioIO;
 import br.com.poo.g4.util.Util;
-
-import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
 
 public class AutenticacaoService {
 
@@ -17,7 +18,7 @@ public class AutenticacaoService {
 	static Scanner sc = new Scanner(System.in);
 	public static final String RESET = "\u001B[0m";
 	public static final String VERDE = "\u001B[32m";
-	
+
 	public static void logo() {
 		System.out.println(VERDE + "   _   _   _    _    _            ____              _       _   _   _  \r\n"
 				+ "  | | | | | |  | |  | |          |  _ \\            | |     | | | | | | \r\n"
@@ -29,19 +30,17 @@ public class AutenticacaoService {
 				+ "                                                                       " + RESET);
 	}
 
-	public static void autenticacao() {
+	public static void autenticacao() throws IOException, InterruptedException {
 
 		// Inserir logo do banco
 		// System.out.println("Logo");
 		// Evita duplicação da mensagem
 		Util.customizer();
-		logger.log(Level.INFO, "===============================\n" 
-					+ "     Menu de autenticação\n\n"
-					+ " * CPF ___.___.___-__\n" 
-					+ "===============================\n" 
-					+ "Digite seu CPF:");
+		loggerCpf();
 		// Recebe o cpf digitado
 		String cpf = sc.nextLine();
+		String senha;
+		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
 		// Cria um mapa local para ser acessado e atribui ele ao mapa de clientes, que
 		// possui os dados do banco
 		Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
@@ -49,19 +48,35 @@ public class AutenticacaoService {
 		if (mapaClientes.containsKey(cpf)) {
 			// Cria um objeto do tipo Cliente para essa pessoa que possui tal cpf
 			Cliente cliente = mapaClientes.get(cpf);
-			logger.log(Level.INFO, "===============================\n" 
-							+ "     Menu de autenticação\n\n" 
-							+ " * CPF: " + cpf + "\n"
-							+ " * Senha: ____________\n" 
-							+ "===============================\n" 
-							+ "Digite sua senha: ");
+			loggerSenha(cpf);
 			// Recebe a senha digitada
-			String senha = sc.nextLine();
+			senha = sc.nextLine();
 			// Verifica se a senha do usuário está correta
 			if (senha.equals(cliente.getSenha())) {
-				logger.log(Level.INFO, "Bem-vindo, " + cliente.getNome() + "!");
+				logger.log(Level.INFO, () -> "\n\nBem-vindo, " + cliente.getNome() + "!\n\n");
 				// Inserir lógica de verificação das permissões e encaminhar pro seu respectivo
 				// menu
+				MenuService.menu(true, false, false, false);
+			} else {
+				logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+				// Volta o usuário para o menu de autenticação
+				autenticacao();
+			}
+		} else if (mapaFuncionarios.containsKey(cpf)) {
+			Funcionario funcionario = mapaFuncionarios.get(cpf);
+			loggerSenha(cpf);
+			senha = sc.nextLine();
+			if (senha.equals(funcionario.getSenha())) {
+				logger.log(Level.INFO, () -> "\n\nBem-vindo, " + funcionario.getNome() + "!\n\n");
+				// Inserir lógica de verificação das permissões e encaminhar pro seu respectivo
+				// menu
+				if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.GERENTE.name())) {
+					MenuService.menu(false, true, false, false);
+				} else if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.DIRETOR.name())) {
+					MenuService.menu(false, false, true, false);
+				} else if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.PRESIDENTE.name())) {
+					MenuService.menu(false, false, false, true);
+				}
 			} else {
 				logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
 				// Volta o usuário para o menu de autenticação
@@ -85,5 +100,25 @@ public class AutenticacaoService {
 
 		RelatorioIO.cadastrarCliente("banco", novoCliente);
 
+	}
+
+	public static void loggerCpf() {
+		logger.log(Level.INFO, """
+				===============================
+				Menu de autenticação
+
+				* CPF ___.___.___-__
+				===============================
+				Digite seu CPF:
+				""");
+	}
+
+	public static void loggerSenha(String cpf) {
+		logger.log(Level.INFO, "\n===============================\n" 
+				+ "     Menu de autenticação\n\n" 
+				+ " * CPF: " + cpf
+				+ "\n" + " * Senha: ____________\n" 
+				+ "===============================\n" 
+				+ "Digite sua senha: ");
 	}
 }

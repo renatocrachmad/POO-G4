@@ -2,7 +2,6 @@ package br.com.poo.g4.services;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,15 +14,24 @@ public class MenuService {
 	static Logger logger = Util.setupLogger();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void menu() throws IOException, InterruptedException {
+	public static void menu(boolean cliente, boolean gerente, boolean diretor, boolean presidente) throws IOException, InterruptedException {
 
 		Util.customizer();
 		logger.log(Level.INFO, """
 				Menu interativo:
-				[1]\tMenu Cliente
-				[2]\tMenu Funcionario
-				[3]\tMenu a implementar
-				[4]\tCriar nova conta
+				""");
+		if (cliente) {
+			logger.log(Level.INFO, """
+					[1]\tMenu Cliente
+					""");
+		} else {
+			logger.log(Level.INFO, """
+					[1]\tMenu Funcionario
+					""");
+		}
+		logger.log(Level.INFO, """
+				[2]\tMenu a implementar
+				[3]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
 				""");
@@ -32,17 +40,18 @@ public class MenuService {
 			int opcao = sc.nextInt();
 			switch (opcao) {
 			case 1:
-				SubMenuService.SubMenuCliente();
+				if (cliente) {
+					SubMenuService.SubMenuCliente();
+				} else {
+					SubMenuService.SubMenuFuncionario(cliente, gerente, diretor, presidente);
+				}
 				break;
 			case 2:
-				SubMenuService.SubMenuFuncionario();
-				break;
-			case 3:
 				// Opção Repetida
 				// Opção a implementar
 				AutenticacaoController.cadastrar();
 				break;
-			case 4:
+			case 3:
 				AutenticacaoController.cadastrar();
 				break;
 			case 0:
@@ -52,14 +61,14 @@ public class MenuService {
 			default:
 				Util.customizer();
 				logger.log(Level.INFO, "Opção inválida!");
-				menu();
+				menu(cliente, gerente, diretor, presidente);
 				break;
 			}
 		} catch (InputMismatchException e) {
 			Util.customizer();
 			logger.log(Level.INFO, "\n\nOpção inválida!\n\n");
 			Thread.sleep(2000);
-			menu();
+			menu(cliente, gerente, diretor, presidente);
 		}
 	}
 }

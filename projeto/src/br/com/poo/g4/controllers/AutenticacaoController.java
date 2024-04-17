@@ -5,7 +5,7 @@ import java.io.IOException;
 import br.com.poo.g4.services.AutenticacaoService;
 
 public class AutenticacaoController {
-	public static void autenticar() {
+	public static void autenticar() throws IOException, InterruptedException {
 		AutenticacaoService.autenticacao();
 	}
 
