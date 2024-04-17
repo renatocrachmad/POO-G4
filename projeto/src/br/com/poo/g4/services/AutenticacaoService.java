@@ -71,8 +71,6 @@ public class AutenticacaoService {
 			logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
 			autenticacao();
 		}
-		// Fecha o Scanner
-		sc.close();
 	}
 
 	public static void leitorCadastro() throws IOException {

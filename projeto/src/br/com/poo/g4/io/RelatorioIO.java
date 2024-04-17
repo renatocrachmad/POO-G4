@@ -72,12 +72,11 @@ public class RelatorioIO {
 		// Instancia o objeto da classe de escrita de arquivos no diretório "pathString"
 		String pathString = PATH_BASICO + fileName + EXTENSAO;
 		BufferedWriter writer = new BufferedWriter(new FileWriter(pathString, true));
-
+		
 		// Escreve os dados ao final da linha do arquivo de texto
-		writer.append("Cliente;" + novoCliente.getNome() + ";" + novoCliente.getCpf() + ";" + novoCliente.getSenha()
-				+ ";\n");
-		//writer.flush();
-		writer.close();
+		writer.append("\n").append("Cliente;" + novoCliente.getNome() + ";" + novoCliente.getCpf() + ";" + novoCliente.getSenha()
+				+ ";");
+		writer.flush();
 	}
 	
 	public static void extratoSaque(Double quantidade) throws IOException {

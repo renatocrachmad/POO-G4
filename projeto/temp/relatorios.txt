@@ -10,3 +10,171 @@ Data de atualização: 16/04/2024 19:43:00
          UruBank
 >=====================<
 
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:38:09
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:38:20
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:38:34
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:40:09
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:41:46
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:46:08
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: vish
+Quantidade de depósitos: vish
+Data de atualização: 16/04/2024 21:46:45
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 22:19:04
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 22:19:26
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 22:58:33
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 23:01:27
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 23:04:00
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 23:04:58
+         UruBank
+>=====================<
+
+>=====================<
+       Agência #001
+Quantidade de contas: 1
+Contas-corrente: 1
+Contas-poupança: 0
+Total de saldo: R$ 0.0
+Quantidade de saques: null
+Quantidade de depósitos: null
+Data de atualização: 16/04/2024 23:05:58
+         UruBank
+>=====================<
+

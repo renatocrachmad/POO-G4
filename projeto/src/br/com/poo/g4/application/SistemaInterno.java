@@ -13,6 +13,8 @@ public class SistemaInterno {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		RelatorioIO.leitor("banco");
 		RelatorioIO.relatorioAgencia("001");
+		AutenticacaoController.autenticar();
+		MenuService.menu();
 	}
 
 }

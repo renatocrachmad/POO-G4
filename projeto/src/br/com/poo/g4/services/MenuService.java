@@ -2,6 +2,7 @@ package br.com.poo.g4.services;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,19 +20,29 @@ public class MenuService {
 		Util.customizer();
 		logger.log(Level.INFO, """
 				Menu interativo:
-				[1]\t A implementar
-				[2]\tCriar nova conta
+				[1]\tMenu Cliente
+				[2]\tMenu Funcionario
+				[3]\tMenu a implementar
+				[4]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
 				""");
+
 		try {
 			int opcao = sc.nextInt();
-
 			switch (opcao) {
 			case 1:
-				//AutenticacaoController.autenticar();
+				SubMenuService.SubMenuCliente();
 				break;
 			case 2:
+				SubMenuService.SubMenuFuncionario();
+				break;
+			case 3:
+				// Opção Repetida
+				// Opção a implementar
+				AutenticacaoController.cadastrar();
+				break;
+			case 4:
 				AutenticacaoController.cadastrar();
 				break;
 			case 0:
@@ -47,7 +58,6 @@ public class MenuService {
 		} catch (InputMismatchException e) {
 			Util.customizer();
 			logger.log(Level.INFO, "\n\nOpção inválida!\n\n");
-			sc.nextLine();
 			Thread.sleep(2000);
 			menu();
 		}
