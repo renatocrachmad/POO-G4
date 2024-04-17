@@ -7,7 +7,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 public class Util {
-
+ 
 	// Cria uma instância do Logger com o nome da classe Util
 	private static Logger logger = Logger.getLogger(Util.class.getName());
 
