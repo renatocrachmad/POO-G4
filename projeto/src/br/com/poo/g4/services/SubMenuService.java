@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 import br.com.poo.g4.services.MenuService;
 import br.com.poo.g4.controllers.FuncionarioController;
+import br.com.poo.g4.entities.Cliente;
 import br.com.poo.g4.entities.Conta;
 import br.com.poo.g4.entities.ContaCorrente;
 import br.com.poo.g4.entities.ContaPoupanca;
@@ -21,7 +22,27 @@ public class SubMenuService {
 	static Logger logger = Util.setupLogger();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void SubMenuCliente() throws IOException, InterruptedException {
+	public static void subMenuCliente1 (Cliente clienteAutenticado) {
+		Util.customizer();
+		logger.log(Level.INFO, """
+					[1] Saque
+					[2] Depósito
+					[3] Transferência
+					[0] Voltar
+					""");
+		int opcao = sc.nextInt();
+		sc.nextLine();
+		
+		switch (opcao) {
+		case 1:
+			
+		}
+	}
+	
+	public static void subMenuCliente2 (Cliente clienteAutenticado) {
+		//Vai ter que ter lógica pra exibir relatório dependendo do tipo da conta!
+	}
+/*	public static void SubMenuCliente() throws IOException, InterruptedException {
 		
 		ContaCorrente contaCorrente = new ContaCorrente();
 		ContaPoupanca contaPoupanca = new ContaPoupanca();
@@ -332,5 +353,5 @@ public class SubMenuService {
 		}
 
 		sc.close();
-	}
+	}*/
 }

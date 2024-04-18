@@ -7,7 +7,6 @@ import br.com.poo.g4.services.GerenteService;
 import br.com.poo.g4.util.Util;
 
 public class Gerente extends Funcionario {
-	private String agencia;
 
 	public Gerente() {
 		super();
@@ -16,14 +15,6 @@ public class Gerente extends Funcionario {
 	public Gerente(String nome, String cpf, String senha, String agencia) {
 		super(nome, cpf, senha);
 		this.tipo ="GERENTE";
-		this.agencia = agencia;
-	}
-
-	public String getAgencia() {
-		return agencia;
-	}
-
-	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
 	

@@ -220,7 +220,24 @@ public class RelatorioIO {
 		buffWrite.close();
 	}
 	
-	public static void relatorioContas(Cliente cliente, Funcionario diretor) throws IOException {
+	public static void relatorioContasGerente(Funcionario gerente) throws IOException {
+		String nome = "relatorios";
+		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
+		
+		buffWrite.append(">============================<\n");
+		buffWrite.append("      Agência " + gerente.getAgencia() + "\n\n");
+		for (Conta c : mapaContas.values()) {
+			if (c.getAgencia().equals(gerente.getAgencia())) {
+				buffWrite.append(" " + c.toString() + "\n");
+			}
+		}
+		buffWrite.append("            UruBank\n");
+		buffWrite.append(">============================<\n\n");
+	}
+	
+	public static void relatorioContasDiretor(Cliente cliente, Funcionario diretor) throws IOException {
 		String nome = "relatorios";
 		Map<String, Cliente> mapaClientes = cliente.getMapaClientes();
 		

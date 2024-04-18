@@ -9,8 +9,8 @@ public abstract class Conta {
 	protected Double saldo;
 	protected String agencia;
 	protected String tipo;
-	protected static Integer saquesTotais;
-	protected static Integer depositosTotais;
+	protected static int saquesTotais;
+	protected static int depositosTotais;
 			
 	public Conta() {
 		super();
