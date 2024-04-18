@@ -29,6 +29,14 @@ O Gerente, se estende de Funcionário e tem um atributo de identificação da ag
 
 </div>
 
+<div align="center">
+
+ 
+##  UML Caso de Uso
+<img src="diagramaCasoUso.png">
+
+</div>
+
 ## Autores
 
 - [Paulo Henrique](https://github.com/paulooosf)
