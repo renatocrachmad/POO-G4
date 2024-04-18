@@ -1,7 +1,14 @@
 package br.com.poo.g4.services;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+=======
+import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+>>>>>>> 42d2dfd fix: Correções diversas
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,10 +26,15 @@ public class MenuService {
 	static Scanner sc = new Scanner(System.in);
 
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 	public static void menu(boolean cliente, boolean gerente, boolean diretor, boolean presidente) throws IOException, InterruptedException {
 =======
 	public static void menuCliente(Cliente clienteAutenticado) throws IOException {
 		
+=======
+	public static void menuCliente(Cliente clienteAutenticado, Conta conta) throws IOException {	
+
+>>>>>>> 42d2dfd fix: Correções diversas
 		Util.customizer();
 		logger.log(Level.INFO, """
 					Menu interativo:
@@ -35,19 +47,17 @@ public class MenuService {
 			int opcao = sc.nextInt();
 			switch (opcao) {
 			case 1:
-				//SubMenuService.subMenuCliente1(clienteAutenticado);
-				System.out.println("A ser feito");
+				SubMenuService.subMenuCliente(clienteAutenticado, conta);
 				break;
 			case 2:
-				//SubMenuService.subMenuCliente2(clienteAutenticado);
-				System.out.println("A ser feito");
+				SubMenuService.subMenuCliente(clienteAutenticado, conta);
 				break;
 			case 0: 
 				logger.log(Level.INFO, "Até mais!");
 				break;
 			default:
 				logger.log(Level.WARNING, "Opção inválida!");
-				menuCliente(clienteAutenticado);
+				menuCliente(clienteAutenticado, conta);
 				break;
 			}
 		} catch (InputMismatchException e) {
@@ -71,7 +81,7 @@ public class MenuService {
 			sc.nextLine();
 			switch (opcao) {
 			case 1:
-				RelatorioIO.relatorioAgencia(gerenteAutenticado.getAgencia());
+				RelatorioIO.relatorioAgencia(gerenteAutenticado.getAgencia(), Conta.getMapaContas());
 				logger.log(Level.INFO, "Relatório gerado em /temp/relatorios.txt");
 				menuGerente(gerenteAutenticado);
 				break;
@@ -133,6 +143,7 @@ public class MenuService {
 					""");
 		try {
 			int opcao = sc.nextInt();
+			sc.nextLine();
 			switch (opcao) {
 			case 1:
 				System.out.println("n fizeram ainda");
@@ -182,6 +193,8 @@ public class MenuService {
 				
 				logger.log(Level.INFO, "Gerente " + gerente.getNome() + " cadastrado com sucesso!");
 				
+				System.out.println("DEBUG criação de gerente: " + gerente.toString());
+				
 				menuDiretor(diretorAutenticado);
 				break;
 			case 0: 
@@ -212,6 +225,7 @@ public class MenuService {
 					""");
 		try {
 			int opcao = sc.nextInt();
+			sc.nextLine();
 			switch (opcao) {
 			case 1:
 				RelatorioIO.relatorioDiretores(presidenteAutenticado);
@@ -279,6 +293,8 @@ public class MenuService {
 				Funcionario diretor = new Diretor(nomeDiretor, cpfDiretor, senhaDiretor);
 				Funcionario.getMapaFuncionarios().put(cpfDiretor, diretor);
 				logger.log(Level.INFO, "Diretor " + diretor.getNome() + " cadastrado com sucesso!");
+				
+				System.out.println("DEBUG diretor: " + diretor.toString());
 				
 				menuPresidente(presidenteAutenticado);
 				break;

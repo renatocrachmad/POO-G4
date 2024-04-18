@@ -2,6 +2,7 @@ package br.com.poo.g4.services;
 
 import java.io.IOException;
 import java.lang.ProcessHandle.Info;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,7 @@ public class SubMenuService {
 
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 	// ClienteController clienteController = new ClienteController();
 
 	public static void SubMenuCliente() {
@@ -39,15 +41,92 @@ public class SubMenuService {
 					""");
 		int opcao = sc.nextInt();
 		sc.nextLine();
+=======
+	public static void subMenuCliente (Cliente clienteAutenticado, Conta conta) {
+>>>>>>> 42d2dfd fix: Correções diversas
 		
-		switch (opcao) {
-		case 1:
+		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		
+		try {
 			
+			System.out.println("DEBUG: " + clienteAutenticado.toString());
+			
+			Util.customizer();
+			logger.log(Level.INFO, """
+						[1] Saque
+						[2] Depósito
+						[3] Transferência
+						[4] Saldo
+						[5] Relatório de Tributações
+						[0] Voltar
+						Digite uma opção:
+						""");
+			System.out.println("Debug voltando ao menu: " + conta.toString());
+			int opcao = sc.nextInt();
+			sc.nextLine();
+			
+			switch (opcao) {
+			case 1:
+				logger.log(Level.INFO, "Digite a quantidade a ser sacada: ");
+				double quantidadeSaque = sc.nextDouble();
+				conta.sacar(quantidadeSaque);
+				logger.log(Level.INFO, "Saque realizado com sucesso!");
+				subMenuCliente(clienteAutenticado, conta);
+				break;
+			case 2:
+				logger.log(Level.INFO, "Digite a quantidade a ser depositada: ");
+				double quantidadeDeposito = sc.nextDouble();
+				conta.depositar(quantidadeDeposito);
+				logger.log(Level.INFO, "Depósito realizado com sucesso!");
+				subMenuCliente(clienteAutenticado, conta);
+				break;
+			case 3:
+				logger.log(Level.INFO, "Digite a quantidade a ser transferida: ");
+				double quantidadeTransferencia = sc.nextDouble();
+				logger.log(Level.INFO, "Digite o CPF do destinatário: ");
+				String cpfDestinatario = sc.nextLine();
+				
+				if (mapaContas.containsKey(cpfDestinatario)) {
+					Conta destinatario = mapaContas.get(cpfDestinatario);
+					conta.transferir(destinatario, quantidadeTransferencia);
+					logger.log(Level.INFO, "Transferência realizada com sucesso!");
+					subMenuCliente(clienteAutenticado, conta);
+				} else {
+					logger.log(Level.INFO, "CPF não encontrado!");
+					subMenuCliente(clienteAutenticado, conta);
+				}
+				break;
+			case 4:
+				logger.log(Level.INFO, "O seu saldo é de R$ " + conta.getSaldo());
+				logger.log(Level.INFO, "Deseja imprimir o extrato? (s/n)");
+				char decisao = sc.next().charAt(0);
+				if (decisao == 's') {
+					RelatorioIO.extratoSaldo(conta);
+					logger.log(Level.INFO, "Relatório gerado em /temp/extrato.txt");
+					subMenuCliente(clienteAutenticado, conta);
+				} else {
+					subMenuCliente(clienteAutenticado, conta);
+				}
+				break;
+			case 5:
+				if (conta.getTipo().equalsIgnoreCase("CORRENTE")) {
+					RelatorioIO.extratoTributacao(conta);
+					logger.log(Level.INFO, "Relatório gerado em /temp/extrato.txt");
+				} else if (conta.getTipo().equalsIgnoreCase("POUPANCA")) {
+					logger.log(Level.INFO, "Sua conta não possui tributação!");
+				}
+					subMenuCliente(clienteAutenticado, conta);
+					break;
+			case 0:
+				MenuService.menuCliente(clienteAutenticado, conta);
+				break;
+			default:
+				logger.log(Level.WARNING, "Opção inválida!");
+				subMenuCliente(clienteAutenticado, conta);
+			}
+		} catch (IOException e) {
+			System.out.println("Erro de leitura");
 		}
-	}
-	
-	public static void subMenuCliente2 (Cliente clienteAutenticado) {
-		//Vai ter que ter lógica pra exibir relatório dependendo do tipo da conta!
 	}
 /*	public static void SubMenuCliente() throws IOException, InterruptedException {
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto

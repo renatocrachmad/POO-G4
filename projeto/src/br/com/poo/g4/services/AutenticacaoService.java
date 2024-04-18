@@ -8,9 +8,15 @@ import java.util.logging.Logger;
 
 import br.com.poo.g4.entities.Cliente;
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 import br.com.poo.g4.entities.Funcionario;
 import br.com.poo.g4.enums.TipoFuncionario;
 =======
+=======
+import br.com.poo.g4.entities.Conta;
+import br.com.poo.g4.entities.ContaCorrente;
+import br.com.poo.g4.entities.ContaPoupanca;
+>>>>>>> 42d2dfd fix: Correções diversas
 import br.com.poo.g4.entities.Diretor;
 import br.com.poo.g4.entities.Funcionario;
 import br.com.poo.g4.entities.Gerente;
@@ -127,6 +133,9 @@ public class AutenticacaoService {
 		
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
 		Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
+		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		Conta contaCorrente = null;
+		Conta contaPoupanca = null;
 
 		if (mapaClientes.containsKey(cpf)) {
 			Cliente cliente = mapaClientes.get(cpf);
@@ -174,9 +183,31 @@ public class AutenticacaoService {
 				}
 =======
 				logger.log(Level.INFO, "Bem-vindo, " + cliente.getNome() + "!");
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 				Cliente clienteAutenticado = new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getSenha());
 				MenuService.menuCliente(clienteAutenticado);
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
+=======
+				Cliente clienteAutenticado = new Cliente(cliente.getNome(), cliente.getCpf(), cliente.getSenha());
+				System.out.println("DEBUG AUTENTICACAOSERVICE: " + clienteAutenticado.toString());
+				
+				if (mapaContas.containsKey(clienteAutenticado.getCpf())) {			
+					Conta conta = mapaContas.get(clienteAutenticado.getCpf());
+					if (conta.getTipo().equalsIgnoreCase("CORRENTE")) {
+						contaCorrente = new ContaCorrente(conta.getCpf(), conta.getAgencia());
+						System.out.println("Criação de conta corrente na autenticação: " + contaCorrente.toString());
+						MenuService.menuCliente(clienteAutenticado, contaCorrente);
+					} else if (conta.getTipo().equalsIgnoreCase("POUPANCA")) {
+						contaPoupanca = new ContaPoupanca(conta.getCpf(), conta.getAgencia(), conta.getRendimento());
+						System.out.println("Criação de conta poupança na autenticação: " + contaPoupanca.toString());
+						MenuService.menuCliente(clienteAutenticado, contaPoupanca);
+					}
+				} else {
+					Util.customizer();
+					logger.log(Level.INFO, "Você não possui nenhuma conta bancária cadastrada! Entre em contato com um gerente.");
+					verificacao();
+				}
+>>>>>>> 42d2dfd fix: Correções diversas
 			} else {
 				logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
 				autenticacaoCliente();

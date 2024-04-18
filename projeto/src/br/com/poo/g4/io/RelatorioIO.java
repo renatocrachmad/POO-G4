@@ -39,27 +39,27 @@ public class RelatorioIO {
 				if (dados[0].equalsIgnoreCase(TipoFuncionario.GERENTE.name())) {
 					Funcionario gerente = new Gerente(dados[1], dados[2], dados[3], dados[4]);
 					Funcionario.getMapaFuncionarios().put(dados[2], gerente);
-					// logger.log(Level.INFO, gerente::toString);
+					//logger.log(Level.INFO, gerente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoFuncionario.DIRETOR.name())) {
 					Funcionario diretor = new Diretor(dados[1], dados[2], dados[3]);
 					Funcionario.getMapaFuncionarios().put(dados[2], diretor);
-					// logger.log(Level.INFO, diretor::toString);
+					//logger.log(Level.INFO, diretor::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoFuncionario.PRESIDENTE.name())) {
 					Funcionario presidente = new Presidente(dados[1], dados[2], dados[3]);
 					Funcionario.getMapaFuncionarios().put(dados[2], presidente);
-					// logger.log(Level.INFO, presidente::toString);
+					//logger.log(Level.INFO, presidente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.CORRENTE.name())) {
 					Conta corrente = new ContaCorrente(dados[1], dados[2]);
 					Conta.getMapaContas().put(dados[1], corrente);
-					// logger.log(Level.INFO, corrente::toString);
+					//logger.log(Level.INFO, corrente::toString);
 				} else if (dados[0].equalsIgnoreCase(TipoConta.POUPANCA.name())) {
 					Conta poupanca = new ContaPoupanca(dados[1], dados[2], Double.parseDouble(dados[3]));
 					Conta.getMapaContas().put(dados[1], poupanca);
-					// logger.log(Level.INFO, poupanca::toString);
+					//logger.log(Level.INFO, poupanca::toString);
 				} else if (dados[0].equalsIgnoreCase("CLIENTE")) {
 					Cliente cliente = new Cliente(dados[1], dados[2], dados[3]);
 					Cliente.getMapaClientes().put(dados[2], cliente);
-					// logger.log(Level.INFO, cliente::toString);
+					//logger.log(Level.INFO, cliente::toString);
 				}
 			} else {
 				break;
@@ -154,7 +154,7 @@ public class RelatorioIO {
 
 		buffWrite.append(">============================<\n\n");
 		buffWrite.append(" Tributação total de saques: R$ " + ContaCorrente.getTributacoesSaque() + "\n");
-		buffWrite.append(" Tributação total de depósitos: R$" + ContaCorrente.getTributacoesDeposito() + "\n");
+		buffWrite.append(" Tributação total de depósitos: R$ " + ContaCorrente.getTributacoesDeposito() + "\n");
 		buffWrite.append(" Tributação total de transferências: R$ " + ContaCorrente.getTributacoesTransferencia() + "\n");		
 		buffWrite.append(" Data de atualização: " + dtfBr.format(ldt) + "\n\n");
 		buffWrite.append("            UruBank\n");
@@ -180,7 +180,7 @@ public class RelatorioIO {
 		buffWrite.close();	
 	}
 	
-	public static void relatorioAgencia(String agencia) throws IOException {
+	public static void relatorioAgencia(String agencia, Map<String, Conta> mapaContas) throws IOException {
 		String nome = "relatorios";
 		LocalDateTime ldt = LocalDateTime.now();
 		
@@ -188,8 +188,7 @@ public class RelatorioIO {
 		Double saldoTotal = 0.0;
 		Integer contasCorrente = 0;
 		Integer contasPoupanca = 0;
-		
-		Map<String, Conta> mapaContas = Conta.getMapaContas();
+
 		
 		for (Conta conta : mapaContas.values()) {
 			if (conta.getAgencia().equals(agencia)) {
@@ -221,8 +220,10 @@ public class RelatorioIO {
 	}
 	
 	public static void relatorioContasGerente(Funcionario gerente) throws IOException {
-		String nome = "relatorios";
+		String nome = "relatorios2";
 		Map<String, Conta> mapaContas = Conta.getMapaContas();
+		
+		System.out.println("DEBUG relatorioContasGerente:" + gerente.toString());
 		
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nome + EXTENSAO, true));
 		
@@ -233,6 +234,7 @@ public class RelatorioIO {
 				buffWrite.append(" " + c.toString() + "\n");
 			}
 		}
+		System.out.println("Debug meio da escrita");
 		buffWrite.append("            UruBank\n");
 		buffWrite.append(">============================<\n\n");
 	}

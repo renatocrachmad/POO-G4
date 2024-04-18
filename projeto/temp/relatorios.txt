@@ -1,0 +1,14 @@
+>============================<
+        Agência #001
+
+ Quantidade de contas: 1
+ Contas-corrente: 1
+ Contas-poupança: 0
+ Total de saldo: R$ 0.0
+ Quantidade de saques: 0
+ Quantidade de depósitos: 0
+ Data de atualização: 18/04/2024 15:05:34
+
+            UruBank
+>============================<
+
