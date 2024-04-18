@@ -341,10 +341,15 @@ public class MenuService {
 				[1]\tMenu Cliente
 				[2]\tMenu Funcionario
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 >>>>>>> 25ef01f fix: alteração dos submenus
 =======
 >>>>>>> 24e76be feat: correçao menu
 				[3]\tCriar nova conta
+=======
+				[3]\tMenu a implementar
+				[4]\tCriar nova conta
+>>>>>>> b155cfa Revert "feat: correçao menu"
 				[0]\tSair
 				Digite uma opção:
 				""");
@@ -371,9 +376,18 @@ public class MenuService {
 				break;
 =======
 				SubMenuService.SubMenuFuncionario();
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 				break;		
 >>>>>>> 24e76be feat: correçao menu
+=======
+				break;
+>>>>>>> b155cfa Revert "feat: correçao menu"
 			case 3:
+				// Opção Repetida
+				// Opção a implementar
+				AutenticacaoController.cadastrar();
+				break;
+			case 4:
 				AutenticacaoController.cadastrar();
 				break;
 			case 0:
