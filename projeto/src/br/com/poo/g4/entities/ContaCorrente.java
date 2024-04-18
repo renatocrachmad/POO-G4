@@ -1,7 +1,7 @@
 package br.com.poo.g4.entities;
 
 public class ContaCorrente extends Conta {
-	private Double saldo;
+	
 	private static Double tributacoesSaque = 0.0;
 	private static Double tributacoesDeposito = 0.0;
 	private static Double tributacoesTransferencia = 0.0;
