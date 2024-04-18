@@ -22,8 +22,7 @@ public class MenuService {
 				Menu interativo:
 				[1]\tMenu Cliente
 				[2]\tMenu Funcionario
-				[3]\tMenu a implementar
-				[4]\tCriar nova conta
+				[3]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
 				""");
@@ -38,11 +37,6 @@ public class MenuService {
 				SubMenuService.SubMenuFuncionario();
 				break;
 			case 3:
-				// Opção Repetida
-				// Opção a implementar
-				AutenticacaoController.cadastrar();
-				break;
-			case 4:
 				AutenticacaoController.cadastrar();
 				break;
 			case 0:
