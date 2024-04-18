@@ -94,11 +94,12 @@ public class AutenticacaoService {
 	}
 
 	public static void leitorCadastro() throws IOException {
-		System.out.println("Digite o seu nome: ");
+		Util.customizer();
+		logger.log(Level.INFO, "Digite seu nome: ");
 		String nome = sc.next();
-		System.out.println("Digite seu CPF: ");
+		logger.log(Level.INFO, "Digite seu cpf: ");
 		String cpf = sc.next();
-		System.out.println("Digite uma senha: ");
+		logger.log(Level.INFO, "Digite uma senha: ");
 		String senha = sc.next();
 
 		Cliente novoCliente = new Cliente(nome, cpf, senha);

@@ -19,6 +19,7 @@ public class MenuService {
 		Util.customizer();
 		logger.log(Level.INFO, """
 				Menu interativo:
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 				""");
 		if (cliente) {
 			logger.log(Level.INFO, """
@@ -31,6 +32,10 @@ public class MenuService {
 		}
 		logger.log(Level.INFO, """
 				[2]\tMenu a implementar
+=======
+				[1]\tMenu Cliente
+				[2]\tMenu Funcionario
+>>>>>>> 25ef01f fix: alteração dos submenus
 				[3]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
@@ -47,9 +52,13 @@ public class MenuService {
 				}
 				break;
 			case 2:
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 				// Opção Repetida
 				// Opção a implementar
 				AutenticacaoController.cadastrar();
+=======
+				SubMenuService.SubMenuFuncionario();
+>>>>>>> 25ef01f fix: alteração dos submenus
 				break;
 			case 3:
 				AutenticacaoController.cadastrar();
