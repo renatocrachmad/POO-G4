@@ -340,7 +340,10 @@ public class MenuService {
 =======
 				[1]\tMenu Cliente
 				[2]\tMenu Funcionario
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 >>>>>>> 25ef01f fix: alteração dos submenus
+=======
+>>>>>>> 24e76be feat: correçao menu
 				[3]\tCriar nova conta
 				[0]\tSair
 				Digite uma opção:
@@ -358,6 +361,7 @@ public class MenuService {
 				break;
 			case 2:
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 				// Opção Repetida
 				// Opção a implementar
 				AutenticacaoController.cadastrar();
@@ -365,6 +369,10 @@ public class MenuService {
 				SubMenuService.SubMenuFuncionario();
 >>>>>>> 25ef01f fix: alteração dos submenus
 				break;
+=======
+				SubMenuService.SubMenuFuncionario();
+				break;		
+>>>>>>> 24e76be feat: correçao menu
 			case 3:
 				AutenticacaoController.cadastrar();
 				break;
