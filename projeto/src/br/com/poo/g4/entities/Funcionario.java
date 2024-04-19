@@ -8,6 +8,7 @@ public abstract class Funcionario {
 	protected String cpf;
 	protected String senha;
 	protected String tipo;
+	protected String agencia;
 	
 	static Map<String, Funcionario> mapaFuncionarios = new HashMap<>();
 
@@ -46,6 +47,14 @@ public abstract class Funcionario {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+	
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		this.agencia = agencia;
 	}
 
 	public static Map<String, Funcionario> getMapaFuncionarios() {

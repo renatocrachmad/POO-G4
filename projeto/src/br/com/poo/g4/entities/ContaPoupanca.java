@@ -3,16 +3,16 @@ package br.com.poo.g4.entities;
 public class ContaPoupanca extends Conta {
 
 	Double rendimento;
-	
+
 	public ContaPoupanca() {
 		super();
-			}
+	}
 
 	public ContaPoupanca(String cpf, String agencia, Double rendimento) {
 		super(cpf, agencia, "POUPANCA");
 		this.rendimento = rendimento;
 	}
-	
+
 	public Double getRendimento() {
 		return rendimento;
 	}
@@ -23,7 +23,7 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public String toString() {
-		return "\n + Conta Poupança | CPF: " + cpf + " | Agência: " + agencia + " | Saldo: " + saldo 
+		return "\n + Conta Poupança | CPF: " + cpf + " | Agência: " + agencia + " | Saldo: " + saldo
 				+ " | Taxa de rendimento: " + rendimento + "% \n";
-	}				
+	}
 }

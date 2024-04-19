@@ -1,7 +1,7 @@
 package br.com.poo.g4.entities;
 
 public class ContaCorrente extends Conta {
-	private Double saldo;
+	
 	private static Double tributacoesSaque = 0.0;
 	private static Double tributacoesDeposito = 0.0;
 	private static Double tributacoesTransferencia = 0.0;
@@ -11,9 +11,8 @@ public class ContaCorrente extends Conta {
 		super();
 	}
 
-	public ContaCorrente(String cpf, String agencia, Double taxa) {
+	public ContaCorrente(String cpf, String agencia) {
 		super(cpf, agencia, "CORRENTE");
-		this.taxa = taxa;
 	}
 
 	public static Double getTributacoesSaque() {
@@ -33,7 +32,7 @@ public class ContaCorrente extends Conta {
 		this.taxa = 0.10;
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
-			this.tributacoesSaque += taxa;
+			tributacoesSaque += taxa;
 			saquesTotais += 1;
 		} else {
 			System.out.println("Saldo insuficiente para saque.");
@@ -44,7 +43,7 @@ public class ContaCorrente extends Conta {
 	public void depositar(double valor) {
 		this.taxa = 0.10;
 		saldo += valor - taxa;
-		this.tributacoesDeposito += taxa;
+		tributacoesDeposito += taxa;
 		depositosTotais += 1;
 	}
 
@@ -54,7 +53,7 @@ public class ContaCorrente extends Conta {
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
 			contaDestino.depositar(valor);
-			this.tributacoesTransferencia += taxa;
+			tributacoesTransferencia += taxa;
 		} else {
 			System.out.println("Saldo insuficiente para transferência.");
 		}

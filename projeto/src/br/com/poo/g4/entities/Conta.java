@@ -6,11 +6,12 @@ import java.util.Map;
 public abstract class Conta {
 	
 	protected String cpf;
-	protected Double saldo;
+	protected double saldo;
 	protected String agencia;
 	protected String tipo;
-	protected static Integer saquesTotais;
-	protected static Integer depositosTotais;
+	protected Double rendimento;
+	protected static int saquesTotais;
+	protected static int depositosTotais;
 			
 	public Conta() {
 		super();
@@ -65,6 +66,14 @@ public abstract class Conta {
 
 	public static Integer getDepositosTotais() {
 		return depositosTotais;
+	}
+
+	public Double getRendimento() {
+		return rendimento;
+	}
+
+	public void setRendimento(Double rendimento) {
+		this.rendimento = rendimento;
 	}
 
 	public void depositar(double valor) {

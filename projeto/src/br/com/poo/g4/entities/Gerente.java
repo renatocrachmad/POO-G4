@@ -1,40 +1,21 @@
 package br.com.poo.g4.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import br.com.poo.g4.util.Util;
+import br.com.poo.g4.services.GerenteService;
 
 public class Gerente extends Funcionario {
-	private Integer agencia;
 
 	public Gerente() {
 		super();
 	}
 	
-	public Gerente(String nome, String cpf, String senha, Integer agencia) {
+	public Gerente(String nome, String cpf, String senha, String agencia) {
 		super(nome, cpf, senha);
 		this.tipo ="GERENTE";
 		this.agencia = agencia;
 	}
-
-	public Integer getAgencia() {
-		return agencia;
-	}
-
-	public void setAgencia(Integer agencia) {
-		this.agencia = agencia;
-	}
 	
-	//A ser implementado posteriormente
-	public void cadastrarConta(Integer cpf, String tipo, Integer agencia) {
-		if (tipo.equalsIgnoreCase("CORRENTE")) {
-			// Instanciar nova conta corrente
-		} else if (tipo.equalsIgnoreCase("POUPANCA")) {
-			// Instanciar nova conta poupanca
-		} else {
-			// Msg de erro
-		}
+	public void cadastrarConta(String cpf, String agencia, String tipo) {
+		GerenteService.cadastrarConta(cpf, agencia, tipo);
 	}
 
 	@Override
