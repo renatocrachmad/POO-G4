@@ -78,6 +78,7 @@ public class MenuService {
 					Digite uma opção:
 					""");
 		try {
+			
 			int opcao = sc.nextInt();
 			sc.nextLine();
 			switch (opcao) {
