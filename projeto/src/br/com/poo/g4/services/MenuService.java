@@ -2,15 +2,6 @@ package br.com.poo.g4.services;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-=======
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
->>>>>>> 42d2dfd fix: Correções diversas
-=======
->>>>>>> 3c5736e fix: Correções gerais
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,16 +17,8 @@ public class MenuService {
 	static Logger logger = Util.setupLogger();
 	static Scanner sc = new Scanner(System.in);
 
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-	public static void menu(boolean cliente, boolean gerente, boolean diretor, boolean presidente) throws IOException, InterruptedException {
-=======
-	public static void menuCliente(Cliente clienteAutenticado) throws IOException {
-		
-=======
 	public static void menuCliente(Cliente clienteAutenticado, Conta conta) throws IOException {	
 
->>>>>>> 42d2dfd fix: Correções diversas
 		Util.customizer();
 		logger.log(Level.INFO, """
 					Menu interativo:
@@ -78,7 +61,6 @@ public class MenuService {
 					Digite uma opção:
 					""");
 		try {
-			
 			int opcao = sc.nextInt();
 			sc.nextLine();
 			switch (opcao) {
@@ -317,101 +299,4 @@ public class MenuService {
 			logger.log(Level.WARNING, "Erro na identificação de variável!");
 		}
 	}
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-	
-/*	public static void menu() throws IOException, InterruptedException {
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-
-		Util.customizer();
-		logger.log(Level.INFO, """
-				Menu interativo:
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-				""");
-		if (cliente) {
-			logger.log(Level.INFO, """
-					[1]\tMenu Cliente
-					""");
-		} else {
-			logger.log(Level.INFO, """
-					[1]\tMenu Funcionario
-					""");
-		}
-		logger.log(Level.INFO, """
-				[2]\tMenu a implementar
-=======
-				[1]\tMenu Cliente
-				[2]\tMenu Funcionario
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
->>>>>>> 25ef01f fix: alteração dos submenus
-=======
->>>>>>> 24e76be feat: correçao menu
-				[3]\tCriar nova conta
-=======
-				[3]\tMenu a implementar
-				[4]\tCriar nova conta
->>>>>>> b155cfa Revert "feat: correçao menu"
-				[0]\tSair
-				Digite uma opção:
-				""");
-
-		try {
-			int opcao = sc.nextInt();
-			switch (opcao) {
-			case 1:
-				if (cliente) {
-					SubMenuService.SubMenuCliente();
-				} else {
-					SubMenuService.SubMenuFuncionario(cliente, gerente, diretor, presidente);
-				}
-				break;
-			case 2:
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-				// Opção Repetida
-				// Opção a implementar
-				AutenticacaoController.cadastrar();
-=======
-				SubMenuService.SubMenuFuncionario();
->>>>>>> 25ef01f fix: alteração dos submenus
-				break;
-=======
-				SubMenuService.SubMenuFuncionario();
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-				break;		
->>>>>>> 24e76be feat: correçao menu
-=======
-				break;
->>>>>>> b155cfa Revert "feat: correçao menu"
-			case 3:
-				// Opção Repetida
-				// Opção a implementar
-				AutenticacaoController.cadastrar();
-				break;
-			case 4:
-				AutenticacaoController.cadastrar();
-				break;
-			case 0:
-				Util.customizer();
-				logger.log(Level.INFO, "Volte sempre!");
-				break;
-			default:
-				Util.customizer();
-				logger.log(Level.INFO, "Opção inválida!");
-				menu(cliente, gerente, diretor, presidente);
-				break;
-			}
-		} catch (InputMismatchException e) {
-			Util.customizer();
-			logger.log(Level.INFO, "\n\nOpção inválida!\n\n");
-			Thread.sleep(2000);
-			menu(cliente, gerente, diretor, presidente);
-		}
-	}*/
-=======
->>>>>>> 3c5736e fix: Correções gerais
 }
-=======
-}
->>>>>>> 3bc4b75 fix: correções de autenticação para clientes e suas respectivas contas.

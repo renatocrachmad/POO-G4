@@ -1,50 +1,32 @@
 package br.com.poo.g4.services;
 
-import java.io.IOException;
-import java.util.Map;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.com.poo.g4.entities.Cliente;
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-import br.com.poo.g4.entities.Funcionario;
-import br.com.poo.g4.enums.TipoFuncionario;
-=======
-=======
 import br.com.poo.g4.entities.Conta;
 import br.com.poo.g4.entities.ContaCorrente;
 import br.com.poo.g4.entities.ContaPoupanca;
->>>>>>> 42d2dfd fix: Correções diversas
 import br.com.poo.g4.entities.Diretor;
 import br.com.poo.g4.entities.Funcionario;
 import br.com.poo.g4.entities.Gerente;
 import br.com.poo.g4.entities.Presidente;
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
 import br.com.poo.g4.io.RelatorioIO;
 import br.com.poo.g4.util.Util;
 
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-=======
 import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Map;
 import java.util.Scanner;
 
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
 public class AutenticacaoService {
 
 	private static Logger logger = Util.setupLogger();
 	static Scanner sc = new Scanner(System.in);
 	public static final String RESET = "\u001B[0m";
 	public static final String VERDE = "\u001B[32m";
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-
-=======
 	public static final String VERMELHO = "\u001B[31m";
 	
->>>>>>> 89b72d3 feat: Implementando cadastro de contas
 	public static void logo() {
 		System.out.println(VERDE + "   _   _   _    _    _            ____              _       _   _   _  \r\n"
 				+ "  | | | | | |  | |  | |          |  _ \\            | |     | | | | | | \r\n"
@@ -106,112 +88,15 @@ public class AutenticacaoService {
 	}
 	
 	public static void autenticacaoCliente() throws IOException {
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-	public static void autenticacao() throws IOException, InterruptedException {
-
-		// Inserir logo do banco
-		// System.out.println("Logo");
-		// Evita duplicação da mensagem
-=======
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-		Util.customizer();
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-		loggerCpf();
-		// Recebe o cpf digitado
-=======
-		logger.log(Level.INFO, "===============================\n" 
-					+ "     Menu de autenticação\n\n"
-					+ " * CPF ___.___.___-__\n" 
-					+ "===============================\n" 
-					+ "Digite seu CPF:");
-
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-		String cpf = sc.nextLine();
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-		String senha;
-		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
-		// Cria um mapa local para ser acessado e atribui ele ao mapa de clientes, que
-		// possui os dados do banco
-=======
-=======
->>>>>>> 3c5736e fix: Correções gerais
 		
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-		Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
-		Map<String, Conta> mapaContas = Conta.getMapaContas();
-		Conta contaCorrente = null;
-		Conta contaPoupanca = null;
-
-		if (mapaClientes.containsKey(cpf)) {
-			Cliente cliente = mapaClientes.get(cpf);
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-			loggerSenha(cpf);
-			// Recebe a senha digitada
-			senha = sc.nextLine();
-			// Verifica se a senha do usuário está correta
-=======
-=======
 		try {
 			Util.customizer();
->>>>>>> 3c5736e fix: Correções gerais
 			logger.log(Level.INFO, "===============================\n" 
 						+ "     Menu de autenticação\n\n"
 						+ " * CPF ___.___.___-__\n" 
 						+ "===============================\n" 
 						+ "Digite seu CPF:");
 	
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-			if (senha.equals(cliente.getSenha())) {
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-				logger.log(Level.INFO, () -> "\n\nBem-vindo, " + cliente.getNome() + "!\n\n");
-				// Inserir lógica de verificação das permissões e encaminhar pro seu respectivo
-				// menu
-				MenuService.menu(true, false, false, false);
-			} else {
-				logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
-				// Volta o usuário para o menu de autenticação
-				autenticacao();
-			}
-		} else if (mapaFuncionarios.containsKey(cpf)) {
-			Funcionario funcionario = mapaFuncionarios.get(cpf);
-			loggerSenha(cpf);
-			senha = sc.nextLine();
-			if (senha.equals(funcionario.getSenha())) {
-				logger.log(Level.INFO, () -> "\n\nBem-vindo, " + funcionario.getNome() + "!\n\n");
-				// Inserir lógica de verificação das permissões e encaminhar pro seu respectivo
-				// menu
-				if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.GERENTE.name())) {
-					MenuService.menu(false, true, false, false);
-				} else if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.DIRETOR.name())) {
-					MenuService.menu(false, false, true, false);
-				} else if (funcionario.getTipo().equalsIgnoreCase(TipoFuncionario.PRESIDENTE.name())) {
-					MenuService.menu(false, false, false, true);
-				}
-=======
-				logger.log(Level.INFO, "Bem-vindo, " + cliente.getNome() + "!");
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-				Cliente clienteAutenticado = new Cliente(cliente.getCpf(), cliente.getNome(), cliente.getSenha());
-				MenuService.menuCliente(clienteAutenticado);
->>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
-=======
-				Cliente clienteAutenticado = new Cliente(cliente.getNome(), cliente.getCpf(), cliente.getSenha());
-				System.out.println("DEBUG AUTENTICACAOSERVICE: " + clienteAutenticado.toString());
-				
-				if (mapaContas.containsKey(clienteAutenticado.getCpf())) {			
-					Conta conta = mapaContas.get(clienteAutenticado.getCpf());
-					if (conta.getTipo().equalsIgnoreCase("CORRENTE")) {
-						contaCorrente = new ContaCorrente(conta.getCpf(), conta.getAgencia());
-						System.out.println("Criação de conta corrente na autenticação: " + contaCorrente.toString());
-						MenuService.menuCliente(clienteAutenticado, contaCorrente);
-					} else if (conta.getTipo().equalsIgnoreCase("POUPANCA")) {
-						contaPoupanca = new ContaPoupanca(conta.getCpf(), conta.getAgencia(), conta.getRendimento());
-						System.out.println("Criação de conta poupança na autenticação: " + contaPoupanca.toString());
-						MenuService.menuCliente(clienteAutenticado, contaPoupanca);
-=======
 			String cpf = sc.nextLine();
 			
 			Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
@@ -247,13 +132,11 @@ public class AutenticacaoService {
 						Util.customizer();
 						logger.log(Level.INFO, "Você não possui nenhuma conta bancária cadastrada! Entre em contato com um gerente.");
 						verificacao();
->>>>>>> 3c5736e fix: Correções gerais
 					}
 				} else {
 					logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
 					autenticacaoCliente();
 				}
->>>>>>> 42d2dfd fix: Correções diversas
 			} else {
 				logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
 				autenticacaoCliente();
@@ -421,28 +304,4 @@ public class AutenticacaoService {
 			leitorCadastro();
 		}
 	}
-<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
-
-	public static void loggerCpf() {
-		logger.log(Level.INFO, """
-				===============================
-				Menu de autenticação
-
-				* CPF ___.___.___-__
-				===============================
-				Digite seu CPF:
-				""");
-	}
-
-	public static void loggerSenha(String cpf) {
-		logger.log(Level.INFO, "\n===============================\n" 
-				+ "     Menu de autenticação\n\n" 
-				+ " * CPF: " + cpf
-				+ "\n" + " * Senha: ____________\n" 
-				+ "===============================\n" 
-				+ "Digite sua senha: ");
-	}
 }
-=======
-}
->>>>>>> 3bc4b75 fix: correções de autenticação para clientes e suas respectivas contas.
