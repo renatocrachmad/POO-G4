@@ -16,7 +16,6 @@ public abstract class Funcionario {
 		super();
 	}
 
-	//Fazer override pra só criar tipo dependendo da classe
 	public Funcionario(String nome, String cpf, String senha) {
 		super();
 		this.nome = nome;
