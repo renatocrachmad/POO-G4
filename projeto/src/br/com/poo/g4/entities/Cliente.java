@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Cliente {
-	
+
 	private String nome;
 	private String cpf;
 	private String senha;
-	
+
 	static Map<String, Cliente> mapaClientes = new HashMap<>();
 
 	public Cliente() {

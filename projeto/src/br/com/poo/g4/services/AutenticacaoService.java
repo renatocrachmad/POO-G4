@@ -61,13 +61,13 @@ public class AutenticacaoService {
 			logo();
 			Util.customizer();
 			logger.log(Level.INFO, "===============================\n"
-						+ "    Bem-vindo ao UruBank!\n"
-						+ "    Selecione uma opção:\n"
+						+ "    Bem-vindo ao UruBank!\n\n"
 						+ "[1] Cliente\n"
 						+ "[2] Gerente\n"
 						+ "[3] Diretor\n"
 						+ "[4] Presidente\n"
-						+ "[0] Cadastre-se\n"
+						+ "[5] Cadastre-se\n"
+						+ "[0] Sair\n"
 						+ "===============================\n"
 						+ "Digite a opção:");
 			
@@ -87,8 +87,12 @@ public class AutenticacaoService {
 			case 4: 
 				autenticacaoPresidente();
 				break;
-			case 0:
+			case 5:
 				leitorCadastro();
+				break;
+			case 0:
+				logger.log(Level.INFO, "Até mais!");
+				break;
 			default: 
 				logger.log(Level.INFO, "Opção inválida!");
 				verificacao();
@@ -102,6 +106,7 @@ public class AutenticacaoService {
 	}
 	
 	public static void autenticacaoCliente() throws IOException {
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 	public static void autenticacao() throws IOException, InterruptedException {
@@ -130,7 +135,10 @@ public class AutenticacaoService {
 		// Cria um mapa local para ser acessado e atribui ele ao mapa de clientes, que
 		// possui os dados do banco
 =======
+=======
+>>>>>>> 3c5736e fix: Correções gerais
 		
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
 		Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
 		Map<String, Conta> mapaContas = Conta.getMapaContas();
@@ -145,15 +153,17 @@ public class AutenticacaoService {
 			senha = sc.nextLine();
 			// Verifica se a senha do usuário está correta
 =======
+=======
+		try {
+			Util.customizer();
+>>>>>>> 3c5736e fix: Correções gerais
 			logger.log(Level.INFO, "===============================\n" 
-							+ "     Menu de autenticação\n\n" 
-							+ " * CPF: " + cpf + "\n"
-							+ " * Senha: ____________\n" 
-							+ "===============================\n" 
-							+ "Digite sua senha: ");
-
-			String senha = sc.nextLine();
+						+ "     Menu de autenticação\n\n"
+						+ " * CPF ___.___.___-__\n" 
+						+ "===============================\n" 
+						+ "Digite seu CPF:");
 	
+<<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
 >>>>>>> bb901a1 feat: Mudança nos menus, estruturação geral do projeto
 			if (senha.equals(cliente.getSenha())) {
 <<<<<<< Upstream, based on branch 'main' of https://github.com/renatocrachmad/POO-G4.git
@@ -201,158 +211,215 @@ public class AutenticacaoService {
 						contaPoupanca = new ContaPoupanca(conta.getCpf(), conta.getAgencia(), conta.getRendimento());
 						System.out.println("Criação de conta poupança na autenticação: " + contaPoupanca.toString());
 						MenuService.menuCliente(clienteAutenticado, contaPoupanca);
+=======
+			String cpf = sc.nextLine();
+			
+			Map<String, Cliente> mapaClientes = Cliente.getMapaClientes();
+			Map<String, Conta> mapaContas = Conta.getMapaContas();
+			Conta contaCorrente = null;
+			Conta contaPoupanca = null;
+	
+			if (mapaClientes.containsKey(cpf)) {
+				Cliente cliente = mapaClientes.get(cpf);
+				logger.log(Level.INFO, "===============================\n" 
+								+ "     Menu de autenticação\n\n" 
+								+ " * CPF: " + cpf + "\n"
+								+ " * Senha: ____________\n" 
+								+ "===============================\n" 
+								+ "Digite sua senha: ");
+	
+				String senha = sc.nextLine();
+		
+				if (senha.equals(cliente.getSenha())) {
+					logger.log(Level.INFO, "Bem-vindo, " + cliente.getNome() + "!");
+					Cliente clienteAutenticado = new Cliente(cliente.getNome(), cliente.getCpf(), cliente.getSenha());
+					
+					if (mapaContas.containsKey(clienteAutenticado.getCpf())) {			
+						Conta conta = mapaContas.get(clienteAutenticado.getCpf());
+						if (conta.getTipo().equalsIgnoreCase("CORRENTE")) {
+							contaCorrente = new ContaCorrente(conta.getCpf(), conta.getAgencia());
+							MenuService.menuCliente(clienteAutenticado, contaCorrente);
+						} else if (conta.getTipo().equalsIgnoreCase("POUPANCA")) {
+							contaPoupanca = new ContaPoupanca(conta.getCpf(), conta.getAgencia(), conta.getRendimento());
+							MenuService.menuCliente(clienteAutenticado, contaPoupanca);
+						}
+					} else {
+						Util.customizer();
+						logger.log(Level.INFO, "Você não possui nenhuma conta bancária cadastrada! Entre em contato com um gerente.");
+						verificacao();
+>>>>>>> 3c5736e fix: Correções gerais
 					}
 				} else {
-					Util.customizer();
-					logger.log(Level.INFO, "Você não possui nenhuma conta bancária cadastrada! Entre em contato com um gerente.");
-					verificacao();
+					logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+					autenticacaoCliente();
 				}
 >>>>>>> 42d2dfd fix: Correções diversas
 			} else {
-				logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+				logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
 				autenticacaoCliente();
 			}
-		} else {
-			logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+		} catch (InputMismatchException e) {
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
 			autenticacaoCliente();
 		}
 	}
 	
 	public static void autenticacaoGerente() throws IOException {
 
-		Util.customizer();
-		logger.log(Level.INFO, "===============================\n" 
-					+ "     Menu de autenticação\n\n"
-					+ " * CPF ___.___.___-__\n" 
-					+ "===============================\n" 
-					+ "Digite seu CPF:");
-
-		String cpf = sc.nextLine();
-		
-		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
-
-		if (mapaFuncionarios.containsKey(cpf)) {
-			Funcionario gerente = mapaFuncionarios.get(cpf);
-			if (gerente.getTipo().equalsIgnoreCase("GERENTE")) {
-				logger.log(Level.INFO, "===============================\n" 
-								+ "     Menu de autenticação\n\n" 
-								+ " * CPF: " + cpf + "\n"
-								+ " * Senha: ____________\n" 
-								+ "===============================\n" 
-								+ "Digite sua senha: ");
+		try {
+			Util.customizer();
+			logger.log(Level.INFO, "===============================\n" 
+						+ "     Menu de autenticação\n\n"
+						+ " * CPF ___.___.___-__\n" 
+						+ "===============================\n" 
+						+ "Digite seu CPF:");
 	
-				String senha = sc.nextLine();
+			String cpf = sc.nextLine();
+			
+			Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
+	
+			if (mapaFuncionarios.containsKey(cpf)) {
+				Funcionario gerente = mapaFuncionarios.get(cpf);
+				if (gerente.getTipo().equalsIgnoreCase("GERENTE")) {
+					logger.log(Level.INFO, "===============================\n" 
+									+ "     Menu de autenticação\n\n" 
+									+ " * CPF: " + cpf + "\n"
+									+ " * Senha: ____________\n" 
+									+ "===============================\n" 
+									+ "Digite sua senha: ");
 		
-				if (senha.equals(gerente.getSenha())) {
-					logger.log(Level.INFO, "Bem-vindo, " + gerente.getNome() + "!");
-					Funcionario gerenteAutenticado = new Gerente(gerente.getNome(), gerente.getCpf(), gerente.getSenha(), gerente.getAgencia());
-					MenuService.menuGerente(gerenteAutenticado);
-				} else {
-					logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
-					autenticacaoGerente();
+					String senha = sc.nextLine();
+			
+					if (senha.equals(gerente.getSenha())) {
+						logger.log(Level.INFO, "Bem-vindo, " + gerente.getNome() + "!");
+						Funcionario gerenteAutenticado = new Gerente(gerente.getNome(), gerente.getCpf(), gerente.getSenha(), gerente.getAgencia());
+						MenuService.menuGerente(gerenteAutenticado);
+					} else {
+						logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+						autenticacaoGerente();
+					}
 				}
+			} else {
+				logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+				autenticacaoGerente();
 			}
-		} else {
-			logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+		} catch (InputMismatchException e) {
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
 			autenticacaoGerente();
-		}	
+		}
 	}
 	
 	public static void autenticacaoDiretor() throws IOException {
 
-		Util.customizer();
-		logger.log(Level.INFO, "===============================\n" 
-					+ "     Menu de autenticação\n\n"
-					+ " * CPF ___.___.___-__\n" 
-					+ "===============================\n" 
-					+ "Digite seu CPF:");
-
-		String cpf = sc.nextLine();
-		
-		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
-
-		if (mapaFuncionarios.containsKey(cpf)) {
-			Funcionario diretor = mapaFuncionarios.get(cpf);
-			if (diretor.getTipo().equalsIgnoreCase("DIRETOR")) {
-				logger.log(Level.INFO, "===============================\n" 
-								+ "     Menu de autenticação\n\n" 
-								+ " * CPF: " + cpf + "\n"
-								+ " * Senha: ____________\n" 
-								+ "===============================\n" 
-								+ "Digite sua senha: ");
+		try {
+			Util.customizer();
+			logger.log(Level.INFO, "===============================\n" 
+						+ "     Menu de autenticação\n\n"
+						+ " * CPF ___.___.___-__\n" 
+						+ "===============================\n" 
+						+ "Digite seu CPF:");
 	
-				String senha = sc.nextLine();
+			String cpf = sc.nextLine();
+			
+			Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
+	
+			if (mapaFuncionarios.containsKey(cpf)) {
+				Funcionario diretor = mapaFuncionarios.get(cpf);
+				if (diretor.getTipo().equalsIgnoreCase("DIRETOR")) {
+					logger.log(Level.INFO, "===============================\n" 
+									+ "     Menu de autenticação\n\n" 
+									+ " * CPF: " + cpf + "\n"
+									+ " * Senha: ____________\n" 
+									+ "===============================\n" 
+									+ "Digite sua senha: ");
 		
-				if (senha.equals(diretor.getSenha())) {
-					logger.log(Level.INFO, "Bem-vindo, " + diretor.getNome() + "!");
-					Funcionario diretorAutenticado = new Diretor(diretor.getNome(), diretor.getCpf(), diretor.getSenha());
-					MenuService.menuDiretor(diretorAutenticado);
-				} else {
-					logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
-					autenticacaoDiretor();
+					String senha = sc.nextLine();
+			
+					if (senha.equals(diretor.getSenha())) {
+						logger.log(Level.INFO, "Bem-vindo, " + diretor.getNome() + "!");
+						Funcionario diretorAutenticado = new Diretor(diretor.getNome(), diretor.getCpf(), diretor.getSenha());
+						MenuService.menuDiretor(diretorAutenticado);
+					} else {
+						logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+						autenticacaoDiretor();
+					}
 				}
+			} else {
+				logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+				autenticacaoDiretor();
 			}
-		} else {
-			logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+		} catch (InputMismatchException e) {
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
 			autenticacaoDiretor();
-		}	
+		}
 	}
 	
 	public static void autenticacaoPresidente() throws IOException {
 
-		Util.customizer();
-		logger.log(Level.INFO, "===============================\n" 
-					+ "     Menu de autenticação\n\n"
-					+ " * CPF ___.___.___-__\n" 
-					+ "===============================\n" 
-					+ "Digite seu CPF:");
-
-		String cpf = sc.nextLine();
-		
-		Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
-
-		if (mapaFuncionarios.containsKey(cpf)) {
-			Funcionario presidente = mapaFuncionarios.get(cpf);
-			if (presidente.getTipo().equalsIgnoreCase("PRESIDENTE")) {
-				logger.log(Level.INFO, "===============================\n" 
-								+ "     Menu de autenticação\n\n" 
-								+ " * CPF: " + cpf + "\n"
-								+ " * Senha: ____________\n" 
-								+ "===============================\n" 
-								+ "Digite sua senha: ");
+		try {
+			Util.customizer();
+			logger.log(Level.INFO, "===============================\n" 
+						+ "     Menu de autenticação\n\n"
+						+ " * CPF ___.___.___-__\n" 
+						+ "===============================\n" 
+						+ "Digite seu CPF:");
 	
-				String senha = sc.nextLine();
+			String cpf = sc.nextLine();
+			
+			Map<String, Funcionario> mapaFuncionarios = Funcionario.getMapaFuncionarios();
+	
+			if (mapaFuncionarios.containsKey(cpf)) {
+				Funcionario presidente = mapaFuncionarios.get(cpf);
+				if (presidente.getTipo().equalsIgnoreCase("PRESIDENTE")) {
+					logger.log(Level.INFO, "===============================\n" 
+									+ "     Menu de autenticação\n\n" 
+									+ " * CPF: " + cpf + "\n"
+									+ " * Senha: ____________\n" 
+									+ "===============================\n" 
+									+ "Digite sua senha: ");
 		
-				if (senha.equals(presidente.getSenha())) {
-					logger.log(Level.INFO, "Bem-vindo, " + presidente.getNome() + "!");
-					Funcionario presidenteAutenticado = new Presidente(presidente.getNome(), presidente.getCpf(), presidente.getSenha());
-					MenuService.menuPresidente(presidenteAutenticado);
-				} else {
-					logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
-					autenticacaoPresidente();
+					String senha = sc.nextLine();
+			
+					if (senha.equals(presidente.getSenha())) {
+						logger.log(Level.INFO, "Bem-vindo, " + presidente.getNome() + "!");
+						Funcionario presidenteAutenticado = new Presidente(presidente.getNome(), presidente.getCpf(), presidente.getSenha());
+						MenuService.menuPresidente(presidenteAutenticado);
+					} else {
+						logger.log(Level.INFO, "Senha incorreta. Verifique sua escrita e tente novamente.");
+						autenticacaoPresidente();
+					}
 				}
+			} else {
+				logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+				autenticacaoPresidente();
 			}
-		} else {
-			logger.log(Level.INFO, "CPF não encontrado. Verifique sua escrita e tente novamente.");
+		} catch (InputMismatchException e) {
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
 			autenticacaoPresidente();
-		}	
+		}
 	}
 
 	public static void leitorCadastro() throws IOException {
-		Util.customizer();
-		logger.log(Level.INFO, "Digite seu nome: ");
-		String nome = sc.nextLine();
-		logger.log(Level.INFO, "Digite seu cpf: ");
-		String cpf = sc.nextLine();
-		logger.log(Level.INFO, "Digite uma senha: ");
-		String senha = sc.nextLine();
-
-		Cliente cliente = new Cliente(nome, cpf, senha);
-		Cliente.getMapaClientes().put(cpf, cliente);
-
-		RelatorioIO.cadastrarCliente("banco", cliente);
-		
-		sc.close();
+		try {
+			Util.customizer();
+			logger.log(Level.INFO, "Digite seu nome: ");
+			String nome = sc.nextLine();
+			logger.log(Level.INFO, "Digite seu CPF: ");
+			String cpf = sc.nextLine();
+			logger.log(Level.INFO, "Digite uma senha: ");
+			String senha = sc.nextLine();
+			logger.log(Level.INFO, "Cadastrado(a) com sucesso!");
+			verificacao();
+	
+			Cliente cliente = new Cliente(nome, cpf, senha);
+			Cliente.getMapaClientes().put(cpf, cliente);
+			RelatorioIO.cadastrarCliente(cliente);
+			
+			sc.close();
+		} catch (InputMismatchException e) {
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
+			leitorCadastro();
+		}
 	}
 
 	public static void loggerCpf() {
