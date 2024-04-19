@@ -1,10 +1,6 @@
 package br.com.poo.g4.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.com.poo.g4.services.GerenteService;
-import br.com.poo.g4.util.Util;
 
 public class Gerente extends Funcionario {
 

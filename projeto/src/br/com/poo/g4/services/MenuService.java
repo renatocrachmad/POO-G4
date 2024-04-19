@@ -1,16 +1,11 @@
 package br.com.poo.g4.services;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.com.poo.g4.controllers.AutenticacaoController;
 import br.com.poo.g4.entities.*;
 import br.com.poo.g4.entities.Cliente;
 import br.com.poo.g4.entities.Funcionario;
@@ -71,12 +66,12 @@ public class MenuService {
 			switch (opcao) {
 			case 1:
 				RelatorioIO.relatorioAgencia(gerenteAutenticado.getAgencia(), Conta.getMapaContas());
-				logger.log(Level.INFO, "Relatório gerado em /temp/relatorios.txt");
+				logger.log(Level.INFO, "Relatório gerado em /temp/relatorios.txt\n");
 				menuGerente(gerenteAutenticado);
 				break;
 			case 2:
 				RelatorioIO.relatorioContasGerente(gerenteAutenticado);
-				logger.log(Level.INFO, "Relatório gerado em /temp/relatorios.txt");
+				logger.log(Level.INFO, "Relatório gerado em /temp/relatorios.txt\n");
 				menuGerente(gerenteAutenticado);
 				break;
 			case 3:
@@ -86,23 +81,25 @@ public class MenuService {
 				String cpf = sc.nextLine();
 				logger.log(Level.INFO, "Digite a senha do cliente:\n");
 				String senha = sc.nextLine();
-				System.out.println("DEBUG: " + nome + " " + cpf + " " + senha + "\n");
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
 				Cliente.getMapaClientes().put(cpf, cliente);
+				RelatorioIO.cadastrarCliente(cliente);
 				
 				logger.log(Level.INFO, "Qual o tipo de conta do cliente?");
 				String tipo = sc.nextLine();
 					if (tipo.equalsIgnoreCase("CORRENTE")) {
 						Conta contaCorrente = new ContaCorrente(cpf, gerenteAutenticado.getAgencia());
 						Conta.getMapaContas().put(cpf, contaCorrente);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaCorrente);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					} else if (tipo.equalsIgnoreCase("POUPANCA")) {
 						logger.log(Level.INFO, "Qual será a taxa de rendimento?");
 						Double rendimento = sc.nextDouble();
 						Conta contaPoupanca = new ContaPoupanca(cpf, gerenteAutenticado.getAgencia(), rendimento);
 						Conta.getMapaContas().put(cpf, contaPoupanca);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaPoupanca);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					}
 				menuGerente(gerenteAutenticado);
 				break;
@@ -135,7 +132,7 @@ public class MenuService {
 			sc.nextLine();
 			switch (opcao) {
 			case 1:
-				System.out.println("n fizeram ainda");
+				//Aguardando lógica
 				menuDiretor(diretorAutenticado);
 				break;
 			case 2:
@@ -145,10 +142,10 @@ public class MenuService {
 				String cpf = sc.nextLine();
 				logger.log(Level.INFO, "Digite a senha do cliente:\n");
 				String senha = sc.nextLine();
-				System.out.println("DEBUG: " + nome + " " + cpf + " " + senha + "\n");
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
 				Cliente.getMapaClientes().put(cpf, cliente);
+				RelatorioIO.cadastrarCliente(cliente);
 				
 				logger.log(Level.INFO, "Qual o tipo de conta do cliente?");
 				String tipo = sc.nextLine();
@@ -157,13 +154,15 @@ public class MenuService {
 					if (tipo.equalsIgnoreCase("CORRENTE")) {
 						Conta contaCorrente = new ContaCorrente(cpf, agencia);
 						Conta.getMapaContas().put(cpf, contaCorrente);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaCorrente);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					} else if (tipo.equalsIgnoreCase("POUPANCA")) {
 						logger.log(Level.INFO, "Qual será a taxa de rendimento?");
 						Double rendimento = sc.nextDouble();
 						Conta contaPoupanca = new ContaPoupanca(cpf, agencia, rendimento);
 						Conta.getMapaContas().put(cpf, contaPoupanca);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaPoupanca);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					}
 				menuDiretor(diretorAutenticado);
 				break;
@@ -179,10 +178,9 @@ public class MenuService {
 				
 				Funcionario gerente = new Gerente(nomeGerente, cpfGerente, senhaGerente, agenciaGerente);
 				Funcionario.getMapaFuncionarios().put(cpfGerente, gerente);
+				RelatorioIO.cadastrarGerente(gerente);
 				
-				logger.log(Level.INFO, "Gerente " + gerente.getNome() + " cadastrado com sucesso!");
-				
-				System.out.println("DEBUG criação de gerente: " + gerente.toString());
+				logger.log(Level.INFO, "Gerente " + gerente.getNome() + " cadastrado com sucesso!\n");
 				
 				menuDiretor(diretorAutenticado);
 				break;
@@ -233,10 +231,10 @@ public class MenuService {
 				String cpf = sc.nextLine();
 				logger.log(Level.INFO, "Digite a senha do cliente:\n");
 				String senha = sc.nextLine();
-				System.out.println("DEBUG: " + nome + " " + cpf + " " + senha + "\n");
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
 				Cliente.getMapaClientes().put(cpf, cliente);
+				RelatorioIO.cadastrarCliente(cliente);
 				
 				logger.log(Level.INFO, "Qual o tipo de conta do cliente?");
 				String tipo = sc.nextLine();
@@ -245,13 +243,15 @@ public class MenuService {
 					if (tipo.equalsIgnoreCase("CORRENTE")) {
 						Conta contaCorrente = new ContaCorrente(cpf, agencia);
 						Conta.getMapaContas().put(cpf, contaCorrente);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaCorrente);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					} else if (tipo.equalsIgnoreCase("POUPANCA")) {
 						logger.log(Level.INFO, "Qual será a taxa de rendimento?");
 						Double rendimento = sc.nextDouble();
 						Conta contaPoupanca = new ContaPoupanca(cpf, agencia, rendimento);
 						Conta.getMapaContas().put(cpf, contaPoupanca);
-						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!");
+						RelatorioIO.cadastrarConta(contaPoupanca);
+						logger.log(Level.INFO, "Cliente " + cliente.getNome() + " cadastrado com sucesso!\n");
 					}
 				menuPresidente(presidenteAutenticado);
 				break;
@@ -267,6 +267,7 @@ public class MenuService {
 				
 				Funcionario gerente = new Gerente(nomeGerente, cpfGerente, senhaGerente, agenciaGerente);
 				Funcionario.getMapaFuncionarios().put(cpfGerente, gerente);
+				RelatorioIO.cadastrarGerente(gerente);
 				logger.log(Level.INFO, "Gerente " + gerente.getNome() + " cadastrado com sucesso!");
 				
 				menuPresidente(presidenteAutenticado);
@@ -281,9 +282,8 @@ public class MenuService {
 				
 				Funcionario diretor = new Diretor(nomeDiretor, cpfDiretor, senhaDiretor);
 				Funcionario.getMapaFuncionarios().put(cpfDiretor, diretor);
+				RelatorioIO.cadastrarDiretor(diretor);
 				logger.log(Level.INFO, "Diretor " + diretor.getNome() + " cadastrado com sucesso!");
-				
-				System.out.println("DEBUG diretor: " + diretor.toString());
 				
 				menuPresidente(presidenteAutenticado);
 				break;
@@ -296,49 +296,7 @@ public class MenuService {
 				break;
 			}
 		} catch (InputMismatchException e) {
-			logger.log(Level.WARNING, "Digite um valor do tipo inteiro válido!");
+			logger.log(Level.WARNING, "Erro na identificação de variável!");
 		}
 	}
-	
-/*	public static void menu() throws IOException, InterruptedException {
-
-		Util.customizer();
-		logger.log(Level.INFO, """
-				Menu interativo:
-				[1]\tMenu Cliente
-				[2]\tMenu Funcionario
-				[3]\tCriar nova conta
-				[0]\tSair
-				Digite uma opção:
-				""");
-
-		try {
-			int opcao = sc.nextInt();
-			switch (opcao) {
-			case 1:
-				SubMenuService.SubMenuCliente();
-				break;
-			case 2:
-				SubMenuService.SubMenuFuncionario();
-				break;
-			case 3:
-				AutenticacaoController.cadastrar();
-				break;
-			case 0:
-				Util.customizer();
-				logger.log(Level.INFO, "Volte sempre!");
-				break;
-			default:
-				Util.customizer();
-				logger.log(Level.INFO, "Opção inválida!");
-				menu();
-				break;
-			}
-		} catch (InputMismatchException e) {
-			Util.customizer();
-			logger.log(Level.INFO, "\n\nOpção inválida!\n\n");
-			Thread.sleep(2000);
-			menu();
-		}
-	}*/
 }

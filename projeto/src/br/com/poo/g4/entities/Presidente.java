@@ -1,9 +1,5 @@
 package br.com.poo.g4.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import br.com.poo.g4.io.RelatorioIO;
 import br.com.poo.g4.services.GerenteService;
 
 public class Presidente extends Funcionario {

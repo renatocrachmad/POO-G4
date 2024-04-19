@@ -32,7 +32,7 @@ public class ContaCorrente extends Conta {
 		this.taxa = 0.10;
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
-			this.tributacoesSaque += taxa;
+			tributacoesSaque += taxa;
 			saquesTotais += 1;
 		} else {
 			System.out.println("Saldo insuficiente para saque.");
@@ -43,7 +43,7 @@ public class ContaCorrente extends Conta {
 	public void depositar(double valor) {
 		this.taxa = 0.10;
 		saldo += valor - taxa;
-		this.tributacoesDeposito += taxa;
+		tributacoesDeposito += taxa;
 		depositosTotais += 1;
 	}
 
@@ -53,7 +53,7 @@ public class ContaCorrente extends Conta {
 		if (saldo >= valor + taxa) {
 			saldo -= valor + taxa;
 			contaDestino.depositar(valor);
-			this.tributacoesTransferencia += taxa;
+			tributacoesTransferencia += taxa;
 		} else {
 			System.out.println("Saldo insuficiente para transferência.");
 		}
