@@ -1,5 +1,5 @@
 # POO-G4
- ## :detective:Índice
+ ## :detective: Índice
 
 * Sobre o Projeto
 * Tecnologias utilizadas
@@ -7,12 +7,25 @@
 * Autores do Projeto
 
 ## Sobre o Projeto
-O projeto visa o desenvolvimento de um pequeno sistema bancário, ele possui as seguintes classes Cliente,Conta, Conta Corrente, Conta Poupança, Funcionário, Gerente, Diretor, Presidente, SistemaInterno(Classe main), TipoFuncionário(Enum), TipoConta(Enum), Login e Cadastro, Leitura e Escrita(i/o).
-Foi criado um arquivo .txt para simular o banco de dados, a entidade Cliente  foram implementados os  atributos de senha e CPF para que possam logar no sistema interno. 
- Na Conta, foram implementados os atributos de CPF do titular, para relacionar a conta com o usuário logado no sistema e o saldo. Adicionalmente, a conta foi colocado o atributo identificador da agência. 
-A Conta Corrente e Conta Poupança, herdarão os atributos e métodos de Conta; a conta também  contem um atributo “tipo” para identificação do tipo de conta. 
-O Funcionário, contem atributos também de CPF e senha para que possam logar no sistema. foi colocado o atributo “cargo ou tipo de funcionário/pessoa”  para identificar qual é o cargo/tipo daquele funcionário. Este atributo  existe na própria classe Funcionario. 
-O Gerente, se estende de Funcionário e tem um atributo de identificação da agência que é responsável por gerir. 
+O projeto visa o desenvolvimento de um pequeno sistema de um Banco fictício, denominado UruBank.
+
+Tal sistema possui diferentes classes para representar as entidades do negócio, assim tendo métodos para suprir as necessidades da operação diária do Banco.
+ 
+O sistema é capaz de ler o arquivo "banco.txt" localizado na pasta temp, assim simulando um banco de dados.
+	
+Algumas funcionalidades do sistema são:
+* Tela de seleção de cargo;
+* Sistema de login funcional;
+* Sistema de cadastro funcional, afetando o banco de dados;
+* Diferente hierarquia de cargos, que possuem diferentes funcionalidades exclusivas (Gerente, Diretor e Presidente);
+* Cadastro de novos clientes sendo feitos por gerentes;
+* Cadastro de novos gerentes sendo feitos por diretores;
+* Cadastro de novos diretores sendo feitos por presidentes;
+* Implementação de conta bancária e operações financeiras funcionais, que podem gerar extrato em arquivo .txt;
+* Registro de todas as operações realizadas em uma execução via arquivo .txt;
+* Tratamento de erros personalizado.
+
+O projeto foi realizado durante o período aproximado de 13 dias, durante a disciplina de Programação Orientada a Objetos da Residência em TIC/Software do Serratec.
 
 ##  Tecnologias utilizadas
 - [Java 17](https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html)

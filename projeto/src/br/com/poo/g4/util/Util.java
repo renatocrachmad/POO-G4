@@ -13,8 +13,7 @@ public class Util {
 
 	// Construtor privado para evitar a instanciação da classe Util
 	private Util() {
-		// Lança uma exceção IllegalStateException se alguém tentar criar uma instância
-		// desta classe
+		// Lança uma exceção IllegalStateException se alguém tentar criar uma instância desta classe
 		throw new IllegalStateException(Util.class.getName());
 	}
 

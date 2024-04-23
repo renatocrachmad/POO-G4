@@ -54,8 +54,8 @@ public class MenuService {
 		Util.customizer();
 		logger.log(Level.INFO, """
 					Menu interativo:
-					[1] Relatório do total de contas da Agência
-					[2] Relatório das contas da Agência
+					[1] Relatório do total de Contas da Agência
+					[2] Relatório detalhado das Contas da Agência
 					[3] Cadastrar cliente
 					[0] Sair
 					Digite uma opção:
@@ -75,18 +75,18 @@ public class MenuService {
 				menuGerente(gerenteAutenticado);
 				break;
 			case 3:
-				logger.log(Level.INFO, "Digite o nome do cliente:\n");
+				logger.log(Level.INFO, "Digite o nome do Cliente:\n");
 				String nome = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do cliente:\n");
+				logger.log(Level.INFO, "Digite o CPF do Cliente:\n");
 				String cpf = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do cliente:\n");
+				logger.log(Level.INFO, "Digite a senha do Cliente:\n");
 				String senha = sc.nextLine();
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
 				Cliente.getMapaClientes().put(cpf, cliente);
 				RelatorioIO.cadastrarCliente(cliente);
 				
-				logger.log(Level.INFO, "Qual o tipo de conta do cliente?");
+				logger.log(Level.INFO, "Qual o tipo de conta do Cliente?");
 				String tipo = sc.nextLine();
 					if (tipo.equalsIgnoreCase("CORRENTE")) {
 						Conta contaCorrente = new ContaCorrente(cpf, gerenteAutenticado.getAgencia());
@@ -121,9 +121,9 @@ public class MenuService {
 		Util.customizer();
 		logger.log(Level.INFO, """
 					Menu interativo:
-					[1] Relatório de informações ordenadas sobre contas
-					[2] Cadastrar cliente
-					[3] Cadastrar gerente
+					[1] Relatório detalhado das Contas do Banco
+					[1] Cadastrar cliente
+					[2] Cadastrar gerente
 					[0] Sair
 					Digite uma opção:
 					""");
@@ -132,15 +132,11 @@ public class MenuService {
 			sc.nextLine();
 			switch (opcao) {
 			case 1:
-				//Aguardando lógica
-				menuDiretor(diretorAutenticado);
-				break;
-			case 2:
-				logger.log(Level.INFO, "Digite o nome do cliente:\n");
+				logger.log(Level.INFO, "Digite o nome do Cliente:\n");
 				String nome = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do cliente:\n");
+				logger.log(Level.INFO, "Digite o CPF do Cliente:\n");
 				String cpf = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do cliente:\n");
+				logger.log(Level.INFO, "Digite a senha do Cliente:\n");
 				String senha = sc.nextLine();
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
@@ -166,14 +162,14 @@ public class MenuService {
 					}
 				menuDiretor(diretorAutenticado);
 				break;
-			case 3:
-				logger.log(Level.INFO, "Digite o nome do gerente: ");
+			case 2:
+				logger.log(Level.INFO, "Digite o nome do Gerente: ");
 				String nomeGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do gerente: ");
+				logger.log(Level.INFO, "Digite o CPF do Gerente: ");
 				String cpfGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do gerente: ");
+				logger.log(Level.INFO, "Digite a senha do Gerente: ");
 				String senhaGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite a agência do gerente: ");
+				logger.log(Level.INFO, "Digite a agência do Gerente: ");
 				String agenciaGerente = sc.nextLine();
 				
 				Funcionario gerente = new Gerente(nomeGerente, cpfGerente, senhaGerente, agenciaGerente);
@@ -204,9 +200,9 @@ public class MenuService {
 					Menu interativo:
 					[1] Relatório de Diretores
 					[2] Relatório de Capital
-					[3] Cadastrar cliente
-					[4] Cadastrar gerente
-					[5] Cadastrar diretor
+					[3] Cadastrar Cliente
+					[4] Cadastrar Gerente
+					[5] Cadastrar Diretor
 					[0] Sair
 					Digite uma opção:
 					""");
@@ -225,18 +221,18 @@ public class MenuService {
 				menuPresidente(presidenteAutenticado);
 				break;
 			case 3:
-				logger.log(Level.INFO, "Digite o nome do cliente:\n");
+				logger.log(Level.INFO, "Digite o nome do Cliente:\n");
 				String nome = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do cliente:\n");
+				logger.log(Level.INFO, "Digite o CPF do Cliente:\n");
 				String cpf = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do cliente:\n");
+				logger.log(Level.INFO, "Digite a senha do Cliente:\n");
 				String senha = sc.nextLine();
 				
 				Cliente cliente = new Cliente(nome, cpf, senha);
 				Cliente.getMapaClientes().put(cpf, cliente);
 				RelatorioIO.cadastrarCliente(cliente);
 				
-				logger.log(Level.INFO, "Qual o tipo de conta do cliente?");
+				logger.log(Level.INFO, "Qual o tipo de conta do Cliente?");
 				String tipo = sc.nextLine();
 				logger.log(Level.INFO, "Qual será a agência?");
 				String agencia = sc.nextLine();				
@@ -256,13 +252,13 @@ public class MenuService {
 				menuPresidente(presidenteAutenticado);
 				break;
 			case 4:
-				logger.log(Level.INFO, "Digite o nome do gerente: ");
+				logger.log(Level.INFO, "Digite o nome do Gerente: ");
 				String nomeGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do gerente: ");
+				logger.log(Level.INFO, "Digite o CPF do Gerente: ");
 				String cpfGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do gerente: ");
+				logger.log(Level.INFO, "Digite a senha do Gerente: ");
 				String senhaGerente = sc.nextLine();
-				logger.log(Level.INFO, "Digite a agência do gerente: ");
+				logger.log(Level.INFO, "Digite a agência do Gerente: ");
 				String agenciaGerente = sc.nextLine();
 				
 				Funcionario gerente = new Gerente(nomeGerente, cpfGerente, senhaGerente, agenciaGerente);
@@ -273,11 +269,11 @@ public class MenuService {
 				menuPresidente(presidenteAutenticado);
 				break;
 			case 5:
-				logger.log(Level.INFO, "Digite o nome do diretor: ");
+				logger.log(Level.INFO, "Digite o nome do Diretor: ");
 				String nomeDiretor = sc.nextLine();
-				logger.log(Level.INFO, "Digite o CPF do diretor: ");
+				logger.log(Level.INFO, "Digite o CPF do Diretor: ");
 				String cpfDiretor = sc.nextLine();
-				logger.log(Level.INFO, "Digite a senha do diretor: ");
+				logger.log(Level.INFO, "Digite a senha do Diretor: ");
 				String senhaDiretor = sc.nextLine();
 				
 				Funcionario diretor = new Diretor(nomeDiretor, cpfDiretor, senhaDiretor);
